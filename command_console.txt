@@ -2,19 +2,19 @@
 импорт всего из news.models: from news.models import *
 создаем пользователя: назв перем = User.objects.create(username=' ', firs_name=' ')
 создаем связь "один к одному" автор-пользователь: Author.objects.create(authorUser= назв перем)
-user_1 = User.objects.create(username='Foma', first_name='Ivanov')
+user_1 = User.objects.create(username='Фома', first_name='Иванов')
 Author.objects.create(authorUser=user_1)
 
-user_2 = User.objects.create(username='Ilana', first_name='Brik')
+user_2 = User.objects.create(username='Илана', first_name='Брик')
 Author.objects.create(authorUser=user_2)
 
-user_3 = User.objects.create(username='Marina', first_name='Rudakova')
+user_3 = User.objects.create(username='Марина', first_name='Рудакова')
 Author.objects.create(authorUser=user_3)
 
-user_4 = User.objects.create(username='Peter', first_name='Urkaev')
+user_4 = User.objects.create(username='Петр', first_name='Юкаев')
 Author.objects.create(authorUser=user_4)
 
-user_5 = User.objects.create(username='Misha', first_name='Amella')
+user_5 = User.objects.create(username='Маша', first_name='Амела')
 Author.objects.create(authorUser=user_5)
 
 создать категории новостей/ статей:
