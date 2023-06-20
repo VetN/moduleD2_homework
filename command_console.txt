@@ -1,7 +1,9 @@
 команда входа: python3 manage.py shell
+
 импорт всего из news.models: from news.models import *
+
 создаем пользователя: назв перем = User.objects.create(username=' ', firs_name=' ')
-создаем связь "один к одному" автор-пользователь: Author.objects.create(authorUser= назв перем)
+cсоздаем связь "один к одному" автор-пользователь: Author.objects.create(authorUser= назв перем)
 user_1 = User.objects.create(username='Фома', first_name='Иванов')
 Author.objects.create(authorUser=user_1)
 
@@ -24,3 +26,83 @@ Category.objects.create(name='culture')
 Category.objects.create(name='education')
 Category.objects.create(name='beauty')
 Category.objects.create(name='pets')
+
+создаем посты:
+Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(first_name='Амела')), 
+categoryType='AR', title='Our children', content='text about our children')
+Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(first_name='Рудакова')), 
+categoryType='NV', title='Events in the city', content='text about weekend in the city')
+Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(first_name='Брик')), 
+categoryType='AR', title='Our frinds: pets', content='text about pets in our life')
+Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(first_name='Амела')), 
+categoryType='AR', title='Culture in our life', content='text about culture')
+Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(first_name='Иванов')), 
+categoryType='AR', title='Beauty', content='text about Spa')
+Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(first_name='Юкаев')), 
+categoryType='NW', title='New school', content='text about education our children')
+Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(first_name='Юкаев')), 
+categoryType='NW', title='Transport schedule', content='text about transport in the city')
+
+присваиваем категории постам:
+1. получаем пост и присваиваем переменную посту
+2. получаем категории и присваиваем переменную категории
+3. добавляем переменной поста переменную категории
+post1 = Post.objects.get(pk=1)
+post2 = Post.objects.get(pk=2)
+post3 = Post.objects.get(pk=3)
+post4 = Post.objects.get(pk=4)
+post5 = Post.objects.get(pk=5)
+post6 = Post.objects.get(title='Transport schedule')
+post7 = Post.objects.get(pk=7)
+
+category1 = Category.objects.get(name='city')
+category2 = Category.objects.get(name='children')
+category3 = Category.objects.get(name='culture')
+category4 = Category.objects.get(name='education')
+category5 = Category.objects.get(name='beauty')
+category6 = Category.objects.get(name='pets')
+
+post1.postCategory.add(category2)
+post2.postCategory.add(category1, category3)
+post3.postCategory.add(category6)
+post4.postCategory.add(category3, category4)
+post5.postCategory.add(category5)
+post6.postCategory.add(category1, category2, category4)
+post7.postCategory.add(category1)
+
+получаем пользователя и присваиваем ему переменную
+создаем комментарий (2 связанных поля commentPost, commintUser)
+
+Comment.objects.create(commentPost = post1, 
+commentUser=User.objects.get(first_name='Юкаев'), content='comment post1')
+
+Comment.objects.create(commentPost = post2, 
+commentUser=User.objects.get(first_name='Юкаев'), content='comment post2')
+
+Comment.objects.create(commentPost = post5, 
+commentUser=User.objects.get(first_name='Юкаев'), content='comment post5')
+
+Comment.objects.create(commentPost = post5, 
+commentUser=User.objects.get(first_name='Амела'), content='comment post5')
+
+Comment.objects.create(commentPost = post3, 
+commentUser=User.objects.get(first_name='Рудакова'), content='comment post3')
+
+добавляем реакцию на посты
+Post.objects.get(pk=7).like()
+Post.objects.get(pk=1).like()
+Post.objects.get(pk=7).like()
+Post.objects.get(pk=7).like()
+Post.objects.get(pk=3).like()
+Post.objects.get(pk=5).dislike()
+Post.objects.get(pk=7).dislike()
+или так
+post3.like()
+post4.dislike()
+post1.dislike()
+
+добавляем реакцию на комментарии
+Comment.objects.get(pk=1).like()
+Comment.objects.get(pk=1).like()
+Comment.objects.get(pk=3).like()
+Comment.objects.get(pk=2).dislike()
