@@ -106,3 +106,48 @@ Comment.objects.get(pk=1).like()
 Comment.objects.get(pk=1).like()
 Comment.objects.get(pk=3).like()
 Comment.objects.get(pk=2).dislike()
+Comment.objects.get(pk=3).dislike()
+Comment.objects.get(pk=3).dislike()
+Comment.objects.get(pk=5).dislike()
+Comment.objects.get(pk=5).dislike()
+Comment.objects.get(pk=5).dislike()
+Comment.objects.get(pk=3).like()
+Comment.objects.get(pk=3).like()
+Comment.objects.get(pk=3).like()
+
+
+Рейтинг пользователей, постов
+Author.objects.get(authorUser = User.objects.get(first_name='Иванов')).update_rating()
+Author.objects.get(authorUser = User.objects.get(first_name='Брик')).update_rating()
+Author.objects.get(authorUser = User.objects.get(first_name='Рудакова')).update_rating()
+Author.objects.get(authorUser = User.objects.get(first_name='Юкаев')).update_rating()
+Author.objects.get(authorUser = User.objects.get(first_name='Амела')).update_rating()
+author1 = Author.objects.get(authorUser = User.objects.get(first_name='Иванов'))
+author2 = Author.objects.get(authorUser = User.objects.get(first_name='Брик'))
+author3 = Author.objects.get(authorUser = User.objects.get(first_name='Рудакова'))
+author4 = Author.objects.get(authorUser = User.objects.get(first_name='Юкаев'))
+author5 = Author.objects.get(authorUser = User.objects.get(first_name='Амела'))
+author1.ratingAuthor
+author2.ratingAuthor
+author3.ratingAuthor
+author4.ratingAuthor
+
+рейтинг лучший автор
+best = Author.objects.all().order_by('-ratingAuthor').values('authorUser', 'ratingAuthor')[0]
+print(best) # user 4 rating 10
+
+рейтинг худший автор
+worst = Author.objects.all().order_by('-ratingAuthor').values('authorUser', 'ratingAuthor').last()
+print(worst) # user 5 rating -9
+
+рейтинг лучший комментарий
+bestComment = Comment.objects.all().order_by('-rating').values('commentPost', 'commentUser').first()
+>>> print(bestComment) # {'commentPost': 5, 'commentUser': 4}
+
+рейтинг худший комментарий
+worstComment = Comment.objects.all().order_by('-rating').values('commentPost', 'commentUser','rating').last()
+print(worstComment) # {'commentPost': 7, 'commentUser': 5, 'rating': -3}
+
+рейтинг лучший пост
+bestPost = 
+Author.objects.all().order_by('-ratingAuthor').values('authorUser', 'ratingAuthor').last()
