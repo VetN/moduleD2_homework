@@ -149,5 +149,5 @@ worstComment = Comment.objects.all().order_by('-rating').values('commentPost', '
 print(worstComment) # {'commentPost': 7, 'commentUser': 5, 'rating': -3}
 
 рейтинг лучший пост
-bestPost = 
-Author.objects.all().order_by('-ratingAuthor').values('authorUser', 'ratingAuthor').last()
+bestPost = Post.objects.all().order_by('-rating').values('author', 'title', 'postCategory').first()
+print(bestPost) # {'author': 4, 'title': 'Transport schedule', 'postCategory': 1, }
