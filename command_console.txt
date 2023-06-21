@@ -148,6 +148,39 @@ bestComment = Comment.objects.all().order_by('-rating').values('commentPost', 'c
 worstComment = Comment.objects.all().order_by('-rating').values('commentPost', 'commentUser','rating').last()
 print(worstComment) # {'commentPost': 7, 'commentUser': 5, 'rating': -3}
 
-рейтинг лучший пост
+рейтинг лучший пост:автор, название,
 bestPost = Post.objects.all().order_by('-rating').values('author', 'title', 'postCategory').first()
 print(bestPost) # {'author': 4, 'title': 'Transport schedule', 'postCategory': 1, }
+
+
+использование функции preview() для лучшего поста
+bestPostContent = Post.objects.all().order_by('-rating').first().preview()
+print(bestPostContent) # text about transport in the city...
+
+список всех постов
+Post.objects.all() #  <QuerySet [<Post: Our children>, <Post: Events in the city>,
+ <Post: Our frinds: pets>, <Post: Culture in our life>, 
+ <Post: Beauty>, <Post: New school>, <Post: Transport schedule>]>
+
+ список авторов всех комментариев
+ Comment.objects.all()
+<QuerySet [<Comment: Петр>, <Comment: Петр>, <Comment: Петр>, 
+<Comment: Маша>, <Comment: Маша>, <Comment: Марина>]>
+Comment.objects.filter(commentPost=post5).values('dateCreation', 'commentUser__username', 'rating', 'content') 
+ 
+ Комментарии автор комментария, к какому посту, текст, рейтинг
+ Сomment.objects.all().values('commentUser', 'commentPost', 'content', 'rating')
+<QuerySet [
+{'commentUser': 4, 'commentPost': 1, 'content': 'comment post1', 'rating': 2}, 
+{'commentUser': 4, 'commentPost': 2, 'content': 'comment post2', 'rating': -1}, 
+{'commentUser': 4, 'commentPost': 5, 'content': 'comment post5', 'rating': 3}, 
+{'commentUser': 5, 'commentPost': 5, 'content': 'comment post5', 'rating': 0}, 
+{'commentUser': 5, 'commentPost': 7, 'content': 'comment post7', 'rating': -3}, 
+{'commentUser': 3, 'commentPost': 3, 'content': 'comment post3', 'rating': 0}]>
+
+все комментарии конкретного пользователя
+Comment.objects.filter(commentUser=4).values('content')
+# <QuerySet [{'content': 'comment post1'}, 
+{'content': 'comment post2'}, 
+{'content': 'comment post5'}]>
+
