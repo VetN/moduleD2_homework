@@ -7,6 +7,7 @@ class Author(models.Model):
     authorUser = models.OneToOneField(User, on_delete = models.CASCADE)
     ratingAuthor = models.SmallIntegerField(default=0)
   
+    
     def update_rating(self):
         #postRat = self.post_set.all().aggregate(postRating=Sum('rating'))
         #pRat = 0
@@ -31,10 +32,10 @@ class Post(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     NEWS = 'NW'
     ARTICLE ='AR'
-    CATEGORY_CHOICES = (
+    CATEGORY_CHOICES = [
         (NEWS, 'Новость'),
         (ARTICLE, 'Статья')
-    )
+    ]
     categoryType = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE)
     dataCreation = models.DateTimeField(auto_now_add=True)
     postCategory = models.ManyToManyField(Category, through='PostCategory')

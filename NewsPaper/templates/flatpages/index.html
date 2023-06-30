@@ -1,0 +1,408 @@
+{% extends 'flatpages/default.html'%}
+
+
+{% block main_content %}
+      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+        <div class="col-xl-2 col-xl-4">
+          <div class="icon-box">
+            <i class="ri-store-line"></i>
+            <h3 ><a href="">ГОРОДСКИЕ НОВОСТИ</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-xl-4">
+          <div class="icon-box">
+            <i class="ri-bar-chart-box-line"></i>
+            <h3><a href="">ВСЕ О НАШИХ ДЕТЯХ</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-xl-4">
+          <div class="icon-box">
+            <i class="ri-calendar-todo-line"></i>
+            <h3><a href="">НОВОСТИ КУЛЬТУРЫ</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-xl-4">
+          <div class="icon-box">
+            <i class="ri-paint-brush-line"></i>
+            <h3><a href="">ОБРАЗОВАНИЕ</a></h3>
+          </div>
+        </div>
+
+        <div class="col-xl-2 col-xl-4">
+          <div class="icon-box">
+            <i class="ri-database-2-line"></i>
+            <h3><a href="">ИНДУСТРИЯ КРАСОТЫ</a></h3>
+          </div>
+        </div>
+        
+        <div class="col-xl-2 col-xl-4">
+          <div class="icon-box">
+            <i class="ri-store-line"></i>
+            <h3 ><a href="">ПУШИСТЫЕ НОВОСТИ</a></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+     
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>News</h2>
+          <p>ПОСЛЕДНИЕ НОВОСТИ</p>
+          <h3>{{time_now|date:'d M Y'}}</h3>
+        </div>
+
+       
+         <div class="  align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              
+                {% block last_news_all%}
+          
+              
+                    <ul>
+                        {% for n in news|slice:"-1:" %}
+                            <li style="list-style-type:none"><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.first_name}}</span></h4><br>{{n.content}}<br> </li>
+                        {%endfor%}
+                    </ul>
+            
+                {% endblock last_news_all %}
+            
+            </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="../../static/assets/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+            <h3>MainNews</h3>
+            <p class="fst-italic">
+              Каждый день наша команда спешит в разные уголки нашей планеты на поиски интересных событий.
+              Наши новости:
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i>Всегда актуальные</li>
+              <li><i class="ri-check-double-line"></i>Всегда интересные</li>
+              <li><i class="ri-check-double-line"></i>Всегда проверенная информация </li>
+            </ul>
+            <p>
+              Мы работаем для вас, наш читатель!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-in">
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><p>СОБЫТИЯ</p></div>
+            <div class="swiper-slide"><p>НОВОСТИ</p></div>
+            <div class="swiper-slide"><p>СТАТЬИ</p></div>
+            <div class="swiper-slide"><p>ТЕАТР</p></div>
+            <div class="swiper-slide"><p>КИНО</p></div>
+            <div class="swiper-slide"><p>ВЫСТАВКИ</p></div>
+            <div class="swiper-slide"><p>ЗДОРОВЬЕ</p></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section><!-- End Clients Section -->
+    
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+        <div class="row no-gutters">
+          <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
+            <div class="content d-flex flex-column justify-content-center">
+              <h3>НАШИ ДОСТИЖЕНИЯ</h3>
+              <div class="row">
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-emoji-smile"></i>
+                    <span data-purecounter-start="0"  data-purecounter-end="100000" data-purecounter-duration="2" class="purecounter"></span>
+                    <p><strong>ПОДПИСЧИКОВ</strong> ежедневно читают нашу газету</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-journal-richtext"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="150000" data-purecounter-duration="2" class="purecounter"></span>
+                    <p><strong>ВЫПУСКОВ</strong> мы издали за годы нашей работы</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-clock"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="17" data-purecounter-duration="4" class="purecounter"></span>
+                    <p><strong>ЛЕТ</strong> мы несем в ваш дом новости</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-award"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="9" data-purecounter-duration="4" class="purecounter"></span>
+                    <p><strong>НАГРАД</strong> получила наша редакция за свою профессиональную деятельность </p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="zoom-in">
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+            <div  class="swiper-slide" >
+              <div class="testimonial-item">
+                <img src="../../static/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>Петр Косин</h3>
+                <h4>Финансовый директор</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Каждый день наша команда работет для наших читателей, которые уже около
+                  20 лет верят в нас. Спасибо нашим читателям за вашу высокую  оценку нашей работе.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../../static/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>Алина Кутикова</h3>
+                <h4>Дизайнер</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Работаю в нашем издании MainNews после окончания университета. 
+                  Стараюсь делать жизнь наших подписчиков яркой и солнечной.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../../static/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <h3>Лена Шлыкова</h3>
+                <h4>Главный редактор</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Наша команда состоит из людей, увлеченных своей профессией.
+                  Каждый день работы в команде,приносит мне новые новые ощущения и знания. 
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../../static/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <h3>"Эдик Чиж</h3>
+                <h4>Фрилансер</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Очень рад работе ав нашем издании. Работа здесь дает мне возможность
+                  получать опыт у профессионалов своего дела.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="../../static/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                <h3>Евгений Римс</h3>
+                <h4>Директор</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Издание MainNews - это сплоченная общим делом команда профессионалов.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+          </div>
+        </div>
+      </div>
+    </section><!-- End Testimonials Section -->
+    <div class="swiper-pagination"></div>
+    
+    
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>НАШИ АВТОРЫ</p>
+        </div>
+        <div class="row">
+          
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="../../static/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Фома Иванов</h4>
+                <span>автор</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img">
+                <img src="../../static/assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Илана Брик</h4>
+                <span>автор</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="member-img">
+                <img src="../../static/assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Петр Юкаев</h4>
+                <span>автор</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="../../static/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Марина Рудакова</h4>
+                <span>автор</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>НАШИ КОНТАКТЫ</p>
+        </div>
+        <div>
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.4381614508643!2d30.40713997687254!3d59.94146456187295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469631f240de6bf5%3A0x59e40e4531642ea2!2z0JrRgNCw0YHQvdC-0LPQstCw0YDQtNC10LnRgdC60LjQuSDRgC3QvSwg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsIDE5NTExMg!5e0!3m2!1sru!2sru!4v1687971990749!5m2!1sru!2sru" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-lg-4">
+            <div class="info">
+              
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>НАШ АДРЕС:</h4>
+                <p>Санкт-Петербург, Новочеркасский пр д.3</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>ПОЧТА:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>ТЕЛЕФОН:</h4>
+                <p>+7 000 00 00</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="имя" required>
+                </div>
+                
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="@" required>
+                </div>
+              </div>
+              
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="тема" required>
+              </div>
+              
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="сообщение" required></textarea>
+              </div>
+              
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              
+              <div class="text-center"><button type="submit">ОТПРАВИТЬ</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+{% endblock main_content %} 

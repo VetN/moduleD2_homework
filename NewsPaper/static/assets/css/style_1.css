@@ -1,0 +1,25 @@
+#hero {
+    height: auto;
+}
+#clients {
+    max-height: 100px;
+}
+#m_icon {
+    margin: 0px;
+}
+#m_icon_box {
+    text-align: left;
+}
+#testimonials {
+    max-height: 350px;
+}
+.testimonials {
+    max-height: 350px;
+}
+#news_last {
+    width: 100%;
+}
+#nml {
+    display: block;
+    justify-content: center;
+}

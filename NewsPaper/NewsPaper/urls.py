@@ -15,8 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from news.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('pages/', include('django.contrib.flatpages.urls')),
+    path('',include('news.urls')),
+    path('news/',include('news.urls')),
+    #path('one_news/', include('news.urls')),
 ]
+handler404 = pageNotFound
+handler500 = pageNotFound_500
+handler403 = pageNotFound_403
+#handler400 = pageNotFound_400

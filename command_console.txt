@@ -152,6 +152,10 @@ print(worstComment) # {'commentPost': 7, 'commentUser': 5, 'rating': -3}
 bestPost = Post.objects.all().order_by('-rating').values('author', 'title', 'postCategory').first()
 print(bestPost) # {'author': 4, 'title': 'Transport schedule', 'postCategory': 1, }
 
+комментарий к этому посту
+comment_bestPost= Comment.objects.filter(commentPost__id = bestPost.id).values('commentUser__username', 'content')
+>>> print(comment_bestPost)
+ # <QuerySet [{'commentUser__username': 'Маша', 'content': 'comment post7'}]>
 
 использование функции preview() для лучшего поста
 bestPostContent = Post.objects.all().order_by('-rating').first().preview()
@@ -183,4 +187,5 @@ Comment.objects.filter(commentUser=4).values('content')
 # <QuerySet [{'content': 'comment post1'}, 
 {'content': 'comment post2'}, 
 {'content': 'comment post5'}]>
+
 

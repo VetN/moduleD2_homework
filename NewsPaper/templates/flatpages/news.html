@@ -1,0 +1,44 @@
+{% extends 'flatpages/default.html'%}
+
+
+{% block main_content %}
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+     
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>News</h2>
+          <p>НОВОСТНАЯ ЛЕНТА</p>
+          <h3>{{time_now|date:'d M Y'}}</h3>
+        </div>
+
+        <div >
+         
+            {% block last_news_2%}
+
+                {% if news %}
+                   
+                    {% for n in news %}
+                        <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-file"></i></div>
+                                <div ><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.author.first_name}}{{n.author.username}}</span></h4><br>{{n.content}}<br> </div>
+                            </div>
+                        </div>
+                    {%endfor%}
+                {% else %}
+                        <h4> Новостей нет </h4>
+                {% endif %}
+              
+            {% endblock last_news_2 %}
+        </div>
+      </div>
+    </section>
+    
+{% endblock main_content %}
+ 
