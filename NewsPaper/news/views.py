@@ -3,6 +3,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView # импортируем класс(будет выводить список объектов из БД) DetailView- отвечает за детали(за 1 продукт)
 from .models import Post
+from datetime import datetime
 
 class ProductsList(ListView):
     model = Post  # указываем модель, объекты которой мы будем выводить
@@ -10,11 +11,16 @@ class ProductsList(ListView):
     context_object_name = 'news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
     queryset = Post.objects.order_by('-id') # выводит список с конца
     
+
+
 class ProductsListMain(ListView):
     model = Post  # указываем модель, объекты которой мы будем выводить
     template_name = 'flatpages/index.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
     context_object_name = 'news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
     queryset = Post.objects.order_by('-id')
+
+   
+
 
 class ProductDetail(DetailView):
     model = Post

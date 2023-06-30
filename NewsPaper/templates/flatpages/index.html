@@ -62,10 +62,10 @@
               <div class="icon"><i class="bx bx-file"></i></div>
               
                 {% block last_news_all%}
-          
+              
               
                     <ul>
-                        {% for n in news|slice:"-1:" %}
+                        {% for n in news|slice:"3" %}
                             <li style="list-style-type:none"><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.first_name}}</span></h4><br>{{n.content}}<br> </li>
                         {%endfor%}
                     </ul>
