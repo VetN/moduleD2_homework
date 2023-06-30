@@ -43,6 +43,7 @@ class Post(models.Model):
     content = models.TextField()
     time_create = models.DateTimeField(auto_now_add=True)
     rating = models.SmallIntegerField(default=0)
+    photo = models.ImageField(upload_to = 'image_photo/', blank=True )
 
     def like(self):
         self.rating += 1

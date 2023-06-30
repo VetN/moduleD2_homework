@@ -20,14 +20,14 @@
         <div >
          
             {% block last_news_2%}
-
+           
                 {% if news %}
                    
                     {% for n in news %}
                         <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-file"></i></div>
-                                <div ><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.author.first_name}}{{n.author.username}}</span></h4><br>{{n.content}}<br> </div>
+                                <div ><i style="color: #ffc451" class="ri-check-double-line"></i><h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> фото:<img src='{{n.photo}}'> ( раздел: {{n.categoryType}} )<br>Автор: {{n.author.first_name}}{{n.author.username}}</span></h4><br>{{n.content}}<br> </div>
                             </div>
                         </div>
                     {%endfor%}
@@ -41,4 +41,3 @@
     </section>
     
 {% endblock main_content %}
- 
