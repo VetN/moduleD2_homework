@@ -9,12 +9,13 @@ class ProductsList(ListView):
     model = Post  # указываем модель, объекты которой мы будем выводить
     template_name = 'flatpages/news.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
     context_object_name = 'news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
-    queryset = Post.objects.order_by('-id') # выводит список с конца
+    queryset = Post.objects.order_by('-id') # выводит список с конца не обяз по id делать
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         #context['time_now'] = datetime.utcnow()
         context['all_posts'] = Post.objects.all()
+        context['all_posts'] = Post.objects.order_by('-dataCreation') # переворачивает список
         return context
 
 class ProductsListMain(ListView):
@@ -24,6 +25,7 @@ class ProductsListMain(ListView):
     queryset = Post.objects.order_by('-id')
 
    
+
 
 
 class ProductDetail(DetailView):

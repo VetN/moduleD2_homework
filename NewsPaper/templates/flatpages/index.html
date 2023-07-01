@@ -2,7 +2,8 @@
 
 
 {% block main_content %}
-      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+      
+<div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
         <div class="col-xl-2 col-xl-4">
           <div class="icon-box">
             <i class="ri-store-line"></i>
@@ -48,46 +49,73 @@
   <main id="main">
      
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>News</h2>
-          <p>ПОСЛЕДНИЕ НОВОСТИ</p>
-        
-          <div class="  align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              
-                {% block last_news_all%}
-              
-                    <ul>
-                        {% for n in news|slice:"3" %}
-                            <li style="list-style-type:none"><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.author.authorUser.username}}</span></h4>{{n.content}}<br><br> </li>
-                        {%endfor%}
-                    </ul>
-            
-                {% endblock last_news_all %}
-            </div>
-
-            <div class="  align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-              <div class="icon-box">
-                <div class="icon"><i class="bx bx-file"></i></div>
-                
-                  {% block last_news_all1%}
-                
-                      <ul>
-                          {% for n in news|slice:"3" %}
-                              <li style="list-style-type:none"><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.author.authorUser.username}}</span></h4>{{n.content}}<br><br> </li>
-                          {%endfor%}
-                      </ul>
-              
-                  {% endblock last_news_all1 %}
+  
+          <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+      
+              <div class="section-title">
+                <h2>News</h2>
+                <p>ПОСЛЕДНИЕ НОВОСТИ</p>
               </div>
 
-          </div>
-        </div>
-      </div>
-    </section>
+              <div class="row">
+                
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="icon-box">
+                    <div style='width: 40px; height: 40px;'class="icon"><i class="bx bxl-dribbble"></i></div>
+                    
+                    {% block last_news_0%}
+                        <div style="list-style-type:none"> 
+                          <div><img style='width: 300px;'src='{{news.0.photo}}'></div><br><br>
+                          <h4>{{news.0.title}}<br>
+                          <span style="font-weight:300; font-size:18px"> 
+                            ( раздел: {{news.0.get_category_type}} )<br>
+                            Автор: {{news.0.author.authorUser.username}} {{news.0.author.authorUser.first_name}}</span></h4>
+                            {{news.0.content|truncatewords:20}}<br><br> </div>
+                    {% endblock last_news_0 %}
+                   
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="icon-box">
+                    <div style='width: 40px; height: 40px;'class="icon"><i class="bx bx-file"></i></div>
+                    
+                    {% block last_news_1%}
+                        <div style="list-style-type:none"> 
+                          <div><img style='width: 300px;'src='{{news.1.photo}}'></div>
+                          <br>
+                          <br>
+                          <h4>{{news.1.title}}<br>
+                          <span style="font-weight:300; font-size:18px"> 
+                            ( раздел: {{news.1.get_category_type}} )<br>
+                            Автор: {{news.1.author.authorUser.username}} {{news.1.author.authorUser.first_name}}</span></h4>
+                            {{news.1.content|truncatewords:20}}<br><br> </div>
+                    {% endblock last_news_1 %}
+                   
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="icon-box">
+                    <div style='width: 40px; height: 40px;'class="icon"><i class="bx bx-tachometer"></i></div>
+                    
+                    {% block last_news_2%}
+                        <div style="list-style-type:none"> 
+                          <div><img style='width: 300px;'src='{{news.2.photo}}'></div><br><br>
+                          <h4>{{news.2.title}}<br>
+                          <span style="font-weight:300; font-size:18px"> 
+                            ( раздел: {{news.2.get_category_type}} )<br>
+                            Автор: {{news.2.author.authorUser.username}} {{news.2.author.authorUser.first_name}}</span></h4>
+                            {{news.2.content| truncatewords:20}}<br><br> </div>
+                    {% endblock last_news_2 %}
+                   
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+          </section>
     
     
     <!-- ======= About Section ======= -->
@@ -318,7 +346,7 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Петр Юкаев</h4>
+                <h4>Петр Юлаев</h4>
                 <span>автор</span>
               </div>
             </div>
