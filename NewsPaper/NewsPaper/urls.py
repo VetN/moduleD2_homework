@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('pages/', include('django.contrib.flatpages.urls')),
     path('',include('news.urls')),
-    path('news/',include('news.urls')),
+    #path('news/',include('news.urls')),
     #path('one_news/', include('news.urls')),
 ]
 #if settings.DEBUG:

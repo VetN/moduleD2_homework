@@ -58,6 +58,9 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def get_category_type(self):
+        return self.get_categoryType_display()
 
 class PostCategory(models.Model):
     postThrough = models.ForeignKey(Post,on_delete=models.CASCADE)

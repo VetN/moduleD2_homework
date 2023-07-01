@@ -53,26 +53,38 @@
         <div class="section-title">
           <h2>News</h2>
           <p>ПОСЛЕДНИЕ НОВОСТИ</p>
-          <h3>{{time_now|date:'d M Y'}}</h3>
-        </div>
-
-       
-         <div class="  align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+        
+          <div class="  align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               
                 {% block last_news_all%}
               
-              
                     <ul>
                         {% for n in news|slice:"3" %}
-                            <li style="list-style-type:none"><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.first_name}}</span></h4>{{n.content}}<br><br> </li>
+                            <li style="list-style-type:none"><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.author.authorUser.username}}</span></h4>{{n.content}}<br><br> </li>
                         {%endfor%}
                     </ul>
             
                 {% endblock last_news_all %}
-            
             </div>
+
+            <div class="  align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bx-file"></i></div>
+                
+                  {% block last_news_all1%}
+                
+                      <ul>
+                          {% for n in news|slice:"3" %}
+                              <li style="list-style-type:none"><i style="color: #ffc451" class="ri-check-double-line"></i> <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> ( раздел: {{n.categoryType}} )<br>Автор: {{n.author.authorUser.username}}</span></h4>{{n.content}}<br><br> </li>
+                          {%endfor%}
+                      </ul>
+              
+                  {% endblock last_news_all1 %}
+              </div>
+
+          </div>
         </div>
       </div>
     </section>

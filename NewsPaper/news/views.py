@@ -11,7 +11,11 @@ class ProductsList(ListView):
     context_object_name = 'news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
     queryset = Post.objects.order_by('-id') # выводит список с конца
     
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #context['time_now'] = datetime.utcnow()
+        context['all_posts'] = Post.objects.all()
+        return context
 
 class ProductsListMain(ListView):
     model = Post  # указываем модель, объекты которой мы будем выводить
