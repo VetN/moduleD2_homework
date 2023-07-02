@@ -1,9 +1,11 @@
 
+
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView # импортируем класс(будет выводить список объектов из БД) DetailView- отвечает за детали(за 1 продукт)
-from .models import Post
+from .models import *
 from datetime import datetime
+
 
 class ProductsList(ListView):
     model = Post  # указываем модель, объекты которой мы будем выводить
@@ -13,9 +15,10 @@ class ProductsList(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        #context['time_now'] = datetime.utcnow()
+        context['time_now'] = datetime.utcnow()
         context['all_posts'] = Post.objects.all()
         context['all_posts'] = Post.objects.order_by('-dataCreation') # переворачивает список
+        
         return context
 
 class ProductsListMain(ListView):
@@ -24,7 +27,23 @@ class ProductsListMain(ListView):
     context_object_name = 'news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
     queryset = Post.objects.order_by('-id')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['time_now'] = datetime.utcnow()  
+        return context
+
+class NewsCategory(ListView):
+    model = Post 
+    template_name = 'flatpages/category_news.html' 
+    context_object_name = 'news_category'
+  
    
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['news_category'] = Post.objects.filter(categoryType='AR') 
+        return context
+
 
 
 

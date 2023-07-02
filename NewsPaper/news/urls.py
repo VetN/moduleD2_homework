@@ -10,4 +10,6 @@ urlpatterns = [
     path('one_news/', news, name='one_news'),
     path('news/', ProductsList.as_view(), name = 'news_page' ),
     path('one_news/<int:pk>', ProductDetail.as_view(), name = 'o_news/'),
+    path('category_news/<slug:category_name>/', NewsCategory.as_view(), name = 'category')
 ]
+#<slug:category_name>

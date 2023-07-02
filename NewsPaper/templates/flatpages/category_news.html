@@ -1,6 +1,5 @@
 {% extends 'flatpages/default.html'%}
 
-
 {% block main_content %}
       </div>
     </div>
@@ -13,24 +12,22 @@
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h2 style="color: black">{{time_now|date:'d M Y'}}<br><br></h2>
-          <h6> All News: {{news| length}}</h6>
+          <h6> All News: {{news_category| length}}</h6>
           <p >НОВОСТНАЯ ЛЕНТА</p>
           
         </div>
 
         <div >
-            {% block last_news_2%}
+            {% block category%}
            
-                {% if news %}
+                {% if news_category %}
                   
-                    {% for n in all_posts %}
+                    {% for n in 'news_category' %}
                     <a style="color: black" href="/one_news/{{n.id}}">
                         <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="icon-box">
-                                
-                                <div>
-                                  <div><img style='width: 300px;'src='{{n.photo}}'></div>
-                                  <div>
+                            <div class="icon-box"><div>
+                                  <div><img style='width: 300px;'src='{{n.photo}}'></div><div>
+                                    
                                       <i style="color: #ffc451" class="ri-check-double-line"></i>
                                       <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> 
                                       ( Раздел: {{n.get_category_type}} )<br>Автор:<span style="font-weight:600"> 
@@ -43,10 +40,10 @@
                       </a>
                     {%endfor%}
                 {% else %}
-                        <h4> Новостей нет </h4>
+                        <h4> Новостей в этом разделе пока нет </h4>
                 {% endif %}
               
-            {% endblock last_news_2 %}
+            {% endblock category %}
         </div>
       </div>
     </section>
