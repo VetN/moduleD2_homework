@@ -23,7 +23,7 @@
                 {% if news %}
                   
                     {% for n in all_posts %}
-                    <a style="color: black" href="/one_news/{{n.id}}">
+                    <a style="color: black" href="{% url 'o_news' n.id %}">
                         <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                             <div class="icon-box">
                                 
