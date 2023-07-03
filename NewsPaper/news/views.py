@@ -18,7 +18,6 @@ class ProductsList(ListView):
         context['time_now'] = datetime.utcnow()
         context['all_posts'] = Post.objects.all()
         context['all_posts'] = Post.objects.order_by('-dataCreation') # переворачивает список
-        
         return context
 
 class ProductsListMain(ListView):
@@ -35,13 +34,14 @@ class ProductsListMain(ListView):
 class NewsCategory(ListView):
     model = Post 
     template_name = 'flatpages/category_news.html' 
-    context_object_name = 'news_category'
-  
-   
+    context_object_name = 'news_category'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
     
+  
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['news_category'] = Post.objects.filter(categoryType='AR') 
+        context['category_sort'] = Post.objects.all().filter(postCategory=self.kwargs['pk'])
+        #context['category_sort']= Post.objects.filter(postCategory=self.kwargs['pk'])
+        # возьмет все посты отфильтрует по пост категории= по рк ( а в url адресе у нас тоже заложен рк) 
         return context
 
 

@@ -3,48 +3,64 @@
 
 {% block main_content %}
       
-<div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
-        <div class="col-xl-2 col-xl-4">
-          <div class="icon-box">
+    <div id="cn_1" class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+    
+      <div class=" col-xl-2 col-xl-4" > 
+        <a  href="{% url 'category' 1 %}"> 
+          <div  class="icon-box">
             <i class="ri-store-line"></i>
-            <h3 ><a href="">ГОРОДСКИЕ НОВОСТИ</a></h3>
+            <h3 id="catnews">ГОРОДСКИЕ НОВОСТИ</h3>
           </div>
-        </div>
-        <div class="col-xl-2 col-xl-4">
+        </a>
+      </div>
+ 
+      <div class="col-xl-2 col-xl-4">
+        <a href="{% url 'category' 2 %}">
           <div class="icon-box">
             <i class="ri-bar-chart-box-line"></i>
-            <h3><a href="">ВСЕ О НАШИХ ДЕТЯХ</a></h3>
+            <h3 id="catnews">ВСЕ О НАШИХ ДЕТЯХ</h3> 
           </div>
-        </div>
-        <div class="col-xl-2 col-xl-4">
+        </a>
+      </div>
+  
+      <div class="col-xl-2 col-xl-4">
+        <a href="{% url 'category' 3 %}">
           <div class="icon-box">
             <i class="ri-calendar-todo-line"></i>
-            <h3><a href="">НОВОСТИ КУЛЬТУРЫ</a></h3>
+            <h3 id="catnews">НОВОСТИ КУЛЬТУРЫ</h3>
           </div>
-        </div>
-        <div class="col-xl-2 col-xl-4">
+        </a>
+      </div>
+  
+      <div class="col-xl-2 col-xl-4">
+        <a href="{% url 'category' 4 %}">
           <div class="icon-box">
             <i class="ri-paint-brush-line"></i>
-            <h3><a href="">ОБРАЗОВАНИЕ</a></h3>
+            <h3 id="catnews">ОБРАЗОВАНИЕ</h3> 
           </div>
-        </div>
-
-        <div class="col-xl-2 col-xl-4">
+        </a>
+      </div>
+  
+      <div class="col-xl-2 col-xl-4">
+        <a href="{% url 'category' 5 %}">
           <div class="icon-box">
             <i class="ri-database-2-line"></i>
-            <h3><a href="">ИНДУСТРИЯ КРАСОТЫ</a></h3>
+            <h3 id="catnews">ИНДУСТРИЯ КРАСОТЫ</h3> 
           </div>
-        </div>
-        
-        <div class="col-xl-2 col-xl-4">
+        </a>
+      </div>
+  
+      <div class="col-xl-2 col-xl-4">
+        <a href="{% url 'category' 6 %}">
           <div class="icon-box">
             <i class="ri-store-line"></i>
-            <h3 ><a href="">ПУШИСТЫЕ НОВОСТИ</a></h3>
+            <h3 id="catnews">ПУШИСТЫЕ НОВОСТИ</h3> 
           </div>
-        </div>
+        </a>
       </div>
     </div>
-  </section><!-- End Hero -->
+  </div>
+</section><!-- End Hero -->
 
   <main id="main">
      

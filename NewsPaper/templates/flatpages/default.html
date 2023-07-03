@@ -32,12 +32,12 @@
           <li><a class="nav-link scrollto active" href="{% url 'home' %}">ГЛАВНАЯ</a></li>
           <li class="dropdown"><a href="{% url 'news_page' %}"><span>НОВОСТИ</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">ГОРОДСКИЕ НОВОСТИ</a></li>
-              <li><a href="#">ВСЕ О ДЕТЯХ</a></li>
-              <li><a href="#">НОВОСТИ КУЛЬТУРЫ</a></li>
-              <li><a href="#">ОБРАЗОВАНИЕ</a></li>
-              <li><a href="#">ВСЕ О КРАСОТЕ</a></li>
-              <li><a href="#">О ЖИВОТНЫХ</a></li>
+              <li><a href="{% url 'category' 1 %}">ГОРОДСКИЕ НОВОСТИ</a></li>
+              <li><a href="{% url 'category' 2 %}">ВСЕ О ДЕТЯХ</a></li>
+              <li><a href="{% url 'category' 3 %}">НОВОСТИ КУЛЬТУРЫ</a></li>
+              <li><a href="{% url 'category' 4 %}">ОБРАЗОВАНИЕ</a></li>
+              <li><a href="{% url 'category' 5 %}">ВСЕ О КРАСОТЕ</a></li>
+              <li><a href="{% url 'category' 6 %}">О ЖИВОТНЫХ</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#services">О НАС</a></li>
@@ -108,12 +108,12 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>РАЗДЕЛЫ</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">ГОРОДСКИЕ НОВОСТИ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">О ДЕТЯХ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">О КУЛЬТУРЕ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">ОБ ОБРАЗОВАНИИ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">О КРАСОТЕ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">О ЖИВОТНЫХ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'category' 1 %}">ГОРОДСКИЕ НОВОСТИ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'category' 2 %}">О ДЕТЯХ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'category' 3 %}">О КУЛЬТУРЕ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'category' 4 %}">ОБ ОБРАЗОВАНИИ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'category' 5 %}">О КРАСОТЕ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'category' 6 %}">О ЖИВОТНЫХ</a></li>
             </ul>
           </div>
 
