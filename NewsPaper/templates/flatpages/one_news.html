@@ -1,5 +1,5 @@
 {% extends 'flatpages/default.html'%}
-
+{% load custom_filters %}
 
 {% block main_content %}
 <body>
@@ -24,7 +24,7 @@
                     <span style="font-size:18px"> 
                       ( раздел: {{one_news.get_category_type}} )<br>
                       Автор: {{one_news.author.authorUser.username}} {{one_news.author.authorUser.first_name}}</span></h4>
-                      <span style='font-size: 18px'>{{one_news.content}}</span> </div>
+                      <span style='font-size: 18px'>{{one_news.content|sensor}}</span> </div>
               {% endblock last_news_all %}
              
             </div>

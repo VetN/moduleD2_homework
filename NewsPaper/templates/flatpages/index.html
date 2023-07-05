@@ -1,4 +1,5 @@
 {% extends 'flatpages/default.html'%}
+{% load custom_filters %}
 
 
 {% block main_content %}
@@ -90,7 +91,7 @@
                           <span style="font-weight:300; font-size:18px"> 
                             ( раздел: {{news.0.get_category_type}} )<br>
                             Автор: {{news.0.author.authorUser.username}} {{news.0.author.authorUser.first_name}}</span></h4>
-                            {{news.0.content|truncatewords:20}}<br><br> </div>
+                            {{news.0.content|truncatewords:20|censor}}<br><br> </div>
                           </a>
                     {% endblock last_news_0 %}
                    
@@ -112,7 +113,7 @@
                           <span style="font-weight:300; font-size:18px"> 
                             ( раздел: {{news.1.get_category_type}} )<br>
                             Автор: {{news.1.author.authorUser.username}} {{news.1.author.authorUser.first_name}}</span></h4>
-                            {{news.1.content|truncatewords:20}}<br><br> </div>
+                            {{news.1.content|truncatewords:20|censor}}<br><br> </div>
                           </a>
                     {% endblock last_news_1 %}
                    
@@ -131,7 +132,7 @@
                           <span style="font-weight:300; font-size:18px"> 
                             ( раздел: {{news.2.get_category_type}} )<br>
                             Автор: {{news.2.author.authorUser.username}} {{news.2.author.authorUser.first_name}}</span></h4>
-                            {{news.2.content| truncatewords:20}}<br><br> </div>
+                            {{news.2.content| truncatewords:20|censor}}<br><br> </div>
                       </a>
                     {% endblock last_news_2 %}
                    
