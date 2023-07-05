@@ -1,7 +1,7 @@
 from django import template
 import os
 
-list = os.path.join('bad_words.txt')
+list = os.path.join('static/assets/bad_words.txt')
 with open(list, 'r', encoding='utf-8') as file:
     list_badwords = [word.rstrip('\n') for word in file.readlines()]
    
