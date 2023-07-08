@@ -79,7 +79,13 @@ class SearchList(ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
         context ['title'] = TitleForms(self.request.GET or None )
+        context ['filterset'] = self.filterset
         return context
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filterset =PostFilter(self.request.GET, queryset)
+        return self.filterset.qs
 
 def pageNotFound(request, exception):
    return HttpResponseNotFound('<h1>Страница не найдена</h1>')

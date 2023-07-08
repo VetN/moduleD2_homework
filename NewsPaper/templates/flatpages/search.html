@@ -11,13 +11,14 @@
            
                 <form style="color:rgba(255, 255, 255, 0.9);background:none;" method="GET">
                    
-                    {{title}}
+                   
+                    {{filterset.form.as_p}}
                     <input class="get-started-btn scrollto" style="background:none; border-bottom-color: none;" type="submit" value="Найти">
                 </form>
             
         </div>
         <div class="container" data-aos="fade-up" >
-            {% if 'title' %}
+            {% if 'filterset' %}
                 {% for post in filter.qs %}
                     <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
                         <div class="icon-box">
