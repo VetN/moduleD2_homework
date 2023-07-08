@@ -7,7 +7,7 @@
   <main id="main">
 
     <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
+      <div class="container" data-aos="fade-up" style="padding-top:5px">
 
         <div> 
           
@@ -24,7 +24,7 @@
                     <span style="font-size:18px"> 
                       ( раздел: {{one_news.get_category_type}} )<br>
                       Автор: {{one_news.author.authorUser.username}} {{one_news.author.authorUser.first_name}}</span></h4>
-                      <span style='font-size: 18px'>{{one_news.content|sensor}}</span> </div>
+                      <span style='font-size: 18px'>{{one_news.content|censor}}</span> </div>
               {% endblock last_news_all %}
              
             </div>
