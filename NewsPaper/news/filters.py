@@ -3,7 +3,7 @@ from django_filters import FilterSet # импортируем filterset, чем-
 from .models import Post
 
 class PostFilter(FilterSet):
-    title = forms.CharField(label = "название", widget = forms.TextInput(attrs={'class':'col-lg-2 col-md-6 footer-link'}))
+
     # Здесь в мета классе надо предоставить модель и указать поля, по которым будет фильтроваться (т.е. подбираться) информация о товарах
     class Meta:
         model = Post

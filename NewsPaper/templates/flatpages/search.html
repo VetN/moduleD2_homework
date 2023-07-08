@@ -9,14 +9,15 @@
         
         <div style="padding-top:100px" ">
            
-                <form style="color:rgba(255, 255, 255, 0.9)"  method="GET">
-                    {{ filter.form }}
-                    <input type="submit" value="Найти">
+                <form style="color:rgba(255, 255, 255, 0.9);background:none;" method="GET">
+                   
+                    {{title}}
+                    <input class="get-started-btn scrollto" style="background:none; border-bottom-color: none;" type="submit" value="Найти">
                 </form>
             
         </div>
         <div class="container" data-aos="fade-up" >
-            {% if 'filter' %}
+            {% if 'title' %}
                 {% for post in filter.qs %}
                     <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
                         <div class="icon-box">
@@ -32,7 +33,7 @@
                                     {{ post.time_create|date:'j M Y ' }}
                                 </p>
                                 <p style="color:rgba(255, 255, 255, 0.9); text-align: left">   
-                                {{ post.content|truncatewords:50|censor }}
+                                {{ post.content|truncatewords:20|censor }}
                                 </p>
                             </a>
                         </div>

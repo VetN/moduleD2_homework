@@ -1,9 +1,16 @@
 
-from django.forms import ModelForm
-from .models import Post
+from django import forms
 
 
-class PostForm(ModelForm):
-    class Meta:
-        model = Post
-        fields = ['author', 'title', 'category', 'content']
+
+class TitleForms(forms.Form):
+    title__icontains = forms.CharField(label = "заголовок",
+                                       widget = forms.TextInput
+                                       (attrs ={
+                                           'type': 'content',
+                                           'name': 'title',
+                                           'placeholder': 'поиск по названию',
+                                           'required': False,
+
+                                       }))
+       
