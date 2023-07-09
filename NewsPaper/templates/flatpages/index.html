@@ -64,6 +64,71 @@
 </section><!-- End Hero -->
 
   <main id="main">
+    
+    
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>News</h2>
+          <p>ВЫБЕРИ НОВОСТИ</p>
+          <h6 style="color: black">{{time_now|date:'d M Y'}}</h6>
+        </div>
+        
+        <div >
+          {% block last_news_2%}
+         
+              {% if l_news %}
+                
+                {% for n in l_news %}
+                  <a style="color: black" href="{% url 'o_news' n.id %}">
+                    <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                      <div class="icon-box">
+                        <div>
+                          <i style="color: #ffc451" class="ri-check-double-line"></i>
+                          <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> 
+                              ( Раздел: {{n.get_category_type}} )Автор:<span style="font-weight:600"> 
+                              {{n.author.authorUser.username}} {{n.author.authorUser.first_name}}</span></h4>
+                              {{n.content|truncatewords:10|censor}}<br> 
+                              <p style='color: rgey; text-align: left'>{{n.dataCreation|date:'d M Y'}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                {%endfor%}
+
+                {% if is_paginated %} 
+                    <!-- Если доступна предыдущая страница, то даём ссылку на неё и самую первую страницу -->
+                  {% if page_obj.has_previous %}
+                    <a style="color: black" href="?page=1">ПЕРВАЯ</a>
+                    <a style="color: black" href="?page={{ page_obj.previous_page_number }}"><<<</a>
+                  {% endif %}
+        
+                    <!-- Показываем только текущую страницу и ближайшие к ней, чтобы список не тянулся и не захламлял страницу -->
+                  {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                      <a style="color: black" >{{ num }}</a>
+                    {% elif num > page_obj.number|add:'-4' and num < page_obj.number|add:'4' %} <!-- выводит только 3 цифры пролистывания-->
+                      <a style="color: black" href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                  {% endfor %}
+
+                      <!-- Если есть следующая страница, то даём ссылку на неё и на самую последнюю страницу -->
+                  {% if page_obj.has_next %}
+                    <a style="color: black" href="?page={{ page_obj.next_page_number }}">>>></a>
+                    <a style="color: black" href="?page={{ page_obj.paginator.num_pages }}">ПОСЛЕДНЯЯ</a>
+                  {% endif %}
+       
+                {% endif %}
+
+              {% else %}
+                      <h4> Новостей нет </h4>
+              {% endif %}
+            
+          {% endblock last_news_2 %}
+        </div>
+      </div>
+    </section>
      
     <!-- ======= Services Section ======= -->
   
@@ -124,24 +189,24 @@
                   <div class="icon-box">
                     <div style='width: 40px; height: 40px;'class="icon"><i class="bx bx-tachometer"></i></div>
                     
-                    {% block last_news_2%}
-                      <a style="color: black" href="{% url 'o_news' news.2.id %}">
+                    {% block choice_news%}
+                      <a style="color: black" href="{% url 'o_news' news.0.id %}"> <!--можно ссылку делать так-->
                         <div style="list-style-type:none"> 
-                          <div><img style='width: 300px;'src='{{news.2.photo}}'></div><br><br>
-                          <h4>{{news.2.title}}<br>
+                          <div><img style='width: 300px;'src='{{news.0.photo}}'></div><br><br>
+                          <h4>{{news.0.title}}<br>
                           <span style="font-weight:300; font-size:18px"> 
-                            ( раздел: {{news.2.get_category_type}} )<br>
-                            Автор: {{news.2.author.authorUser.username}} {{news.2.author.authorUser.first_name}}</span></h4>
-                            {{news.2.content| truncatewords:20|censor}}<br><br> </div>
+                            ( раздел: {{news.0.get_category_type}} )<br>
+                            Автор: {{news.0.author.authorUser.username}} {{news.0.author.authorUser.first_name}}</span></h4>
+                            {{news.0.content|truncatewords:20|censor}}<br><br> </div>
+                        </div>  
                       </a>
-                    {% endblock last_news_2 %}
+                    {% endblock choice_news %}
                    
-                  </div>
-                </div>
-    
-              </div>
+              </div>   
             </div>
-          </section>
+          </div>
+        </div>
+    </section>
     
     
     <!-- ======= About Section ======= -->

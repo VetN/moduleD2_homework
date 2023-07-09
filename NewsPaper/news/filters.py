@@ -1,6 +1,8 @@
 from django import forms
-from django_filters import FilterSet # импортируем filterset, чем-то напоминающий знакомые дженерики
-from .models import Post
+from django_filters import FilterSet
+
+from .forms import NewsForms # импортируем filterset, чем-то напоминающий знакомые дженерики
+from .models import*
 
 class PostFilter(FilterSet):
 
@@ -16,5 +18,14 @@ class PostFilter(FilterSet):
             'categoryType': ['in'],
             'time_create':['gt'],# цена должна быть меньше или равна тому, что указал пользователь
         }
+        widgets = {
+            'time_create': forms.DateField(),
+             'title': forms.CharField( required = False),
+             'author_in': forms.ModelChoiceField(queryset=Author.objects.all(), required = False,),
+             'categoryType': forms.ModelChoiceField(queryset=Category.objects.all(), required = False, )                         
        
-       # fields=('title', 'author', 'postCategory', 'time_create')
+        }
+                    
+
+       
+        #fields=('title', 'author', 'postCategory', 'time_create')

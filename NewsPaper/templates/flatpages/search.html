@@ -9,16 +9,15 @@
         
         <div style="padding-top:100px" ">
            
-                <form style="color:rgba(255, 255, 255, 0.9);background:none;" method="GET">
+                <form style="color:rgba(255, 255, 255, 0.9);background:none; max-weight:50px" method="GET">
                    
-                   
-                    {{filterset.form.as_p}}
-                    <input class="get-started-btn scrollto" style="background:none; border-bottom-color: none;" type="submit" value="Найти">
+                    {{filter.form}}
+                    <input class="get-started-btn scrollto" style="background:none; background-color: none; " type="submit" value="Найти">
                 </form>
             
         </div>
         <div class="container" data-aos="fade-up" >
-            {% if 'filterset' %}
+            {% if news_form  %}
                 {% for post in filter.qs %}
                     <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
                         <div class="icon-box">
