@@ -11,7 +11,7 @@ from .models import *
 from datetime import datetime
 
 
-class ProductsList(ListView):
+class NewsList(ListView):
     model = Post  # указываем модель, объекты которой мы будем выводить
     template_name = 'flatpages/news.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
     context_object_name = 'news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
@@ -24,7 +24,10 @@ class ProductsList(ListView):
         context['all_posts'] = Post.objects.order_by('-dataCreation') # переворачивает список
         return context
 
-class ProductsListMain(ListView):
+
+
+
+class NewsListMain(ListView):
     model = Post  # указываем модель, объекты которой мы будем выводить
     template_name = 'flatpages/index.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
     context_object_name = 'l_news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
@@ -36,9 +39,10 @@ class ProductsListMain(ListView):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow() 
         context['news'] = Post.objects.order_by('-id') 
-        
-        
         return context
+
+
+
 
 class NewsCategory(ListView):
     model = Post 
@@ -56,7 +60,7 @@ class NewsCategory(ListView):
 
 
 
-class ProductDetail(DetailView):
+class NewsDetail(DetailView):
     model = Post
     template_name = 'flatpages/one_news.html' 
     context_object_name = 'one_news'
@@ -81,6 +85,9 @@ class SearchList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()  
+        context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
+        #context ['news_form'] = NewsForms(self.request.GET or None )
+        #context ['filterset'] = self.filterset.qs
         return context
 
     #def get_queryset(self):
@@ -88,15 +95,7 @@ class SearchList(ListView):
         self.filterset =PostFilter(self.request.GET, queryset)
         return self.filterset.qs
     
-    def get_context_data(self, **kwargs): # забираем отфильтрованные объекты переопределяя метод get_context_data у наследуемого класса (привет, полиморфизм, мы скучали!!!)
-        context = super().get_context_data(**kwargs)
-        context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
-        #context ['news_form'] = NewsForms(self.request.GET or None )
-        #context ['filterset'] = self.filterset.qs
     
-
-        
-        return context
     
 
 class AddList(ListView):
@@ -112,6 +111,9 @@ class AddList(ListView):
         context['time_now'] = datetime.utcnow() 
         context['news'] = Post.objects.order_by('-dataCreation')
         return context
+
+
+
 
 
 
