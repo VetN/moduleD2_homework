@@ -7,7 +7,7 @@
 
     <main id="main">
         
-        <div style="padding-top:100px" ">
+        <div style="padding-top:100px" >
            
                 <form style="color:rgba(255, 255, 255, 0.9);background:none; max-weight:50px" method="GET">
                    
@@ -17,7 +17,7 @@
             
         </div>
         <div class="container" data-aos="fade-up" >
-            {% if news_form  %}
+            {% if filter  %}
                 {% for post in filter.qs %}
                     <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
                         <div class="icon-box">

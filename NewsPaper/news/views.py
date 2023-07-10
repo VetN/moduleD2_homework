@@ -66,7 +66,9 @@ def news(request):
 
 def search(request):
     return render(request, 'flatpages/search.html', {'title':'поиск новостей'}) 
-   
+
+
+
 class SearchList(ListView):
     model = Post  # указываем модель, объекты которой мы будем выводить
     template_name = 'flatpages/search.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
@@ -89,7 +91,7 @@ class SearchList(ListView):
     def get_context_data(self, **kwargs): # забираем отфильтрованные объекты переопределяя метод get_context_data у наследуемого класса (привет, полиморфизм, мы скучали!!!)
         context = super().get_context_data(**kwargs)
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
-        context ['news_form'] = NewsForms(self.request.GET or None )
+        #context ['news_form'] = NewsForms(self.request.GET or None )
         #context ['filterset'] = self.filterset.qs
     
 
@@ -97,7 +99,21 @@ class SearchList(ListView):
         return context
     
 
+class AddList(ListView):
+    model = Post 
+    template_name = 'flatpages/add_news.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
+    context_object_name = 'add_news' 
+    queryset = Post.objects.order_by('-id')
+    #paginate_by = 7
     
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['time_now'] = datetime.utcnow() 
+        context['news'] = Post.objects.order_by('-dataCreation')
+        return context
+
+
 
 def pageNotFound(request, exception):
    return HttpResponseNotFound('<h1>Страница не найдена</h1>')
