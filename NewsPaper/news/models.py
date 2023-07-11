@@ -65,7 +65,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
-    def __str__(self):
+    #def __str__(self):
         return self.postCategory.Category.name
     
     def get_category_type(self):

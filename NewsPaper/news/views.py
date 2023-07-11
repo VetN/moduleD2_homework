@@ -4,7 +4,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from .forms import NewsForms
+from .forms import *
 
 from .filters import PostFilter # импортируем класс(будет выводить список объектов из БД) DetailView- отвечает за детали(за 1 продукт)
 from .models import *
@@ -52,7 +52,7 @@ class NewsCategory(ListView):
   
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['category_sort'] = Post.objects.all().filter(postCategory=self.kwargs['pk'])
+        context['category_sort'] = Post.objects.order_by('-id').filter(postCategory=self.kwargs['pk'])
         #context['category_sort']= Post.objects.filter(postCategory=self.kwargs['pk'])
         # возьмет все посты отфильтрует по пост категории= по рк ( а в url адресе у нас тоже заложен рк) 
         return context
@@ -68,8 +68,7 @@ class NewsDetail(DetailView):
 def news(request):
     return render(request, 'flatpages/news.html', {'title':'все новости'}) 
 
-def search(request):
-    return render(request, 'flatpages/search.html', {'title':'поиск новостей'}) 
+ 
 
 
 
@@ -103,18 +102,38 @@ class AddList(ListView):
     template_name = 'flatpages/add_news.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
     context_object_name = 'add_news' 
     queryset = Post.objects.order_by('-id')
-    #paginate_by = 7
-    
+    paginate_by = 1
+   
+    form_class = AddNewsForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow() 
         context['news'] = Post.objects.order_by('-dataCreation')
+       
+        context['form_my'] = AddNewsForm()
         return context
-
-
-
-
+    # если делать руками
+   # def post(self, request, *args, **kwargs):
+        # берём значения для нового товара из POST-запроса отправленного на сервер
+        title = request.POST['title']
+        author_id = request.POST['author']
+        content = request.POST['content']
+        postCategory = request.POST['postCategory']
+        #photo = request.POST['photo']
+        post = Post(title=title, author_id =author_id, content=content) # создаём новый товар и сохраняем
+        post.save()
+        return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
+    
+    
+    #если использовать стандартную форму post
+    def post(self, request, *args, **kwargs):
+        form_my = self.form_class(request.POST, request.FILES) # создаём новую форму, забиваем в неё данные из POST-запроса 
+    
+        if form_my.is_valid(): # если пользователь ввёл всё правильно и нигде не накосячил, то сохраняем новый товар
+            form_my.save()
+ 
+        return super().get(request, *args, **kwargs)
 
 
 def pageNotFound(request, exception):
