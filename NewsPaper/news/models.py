@@ -49,7 +49,7 @@ class Post(models.Model):
     content = models.TextField()
     time_create = models.DateTimeField(auto_now_add=True)
     rating = models.SmallIntegerField(default=0)
-    photo = models.ImageField(upload_to = 'image_photo/', blank=True )
+    photo = models.ImageField(upload_to = 'image_photo/', blank=True, null=True,  )
 
     def like(self):
         self.rating += 1
@@ -70,6 +70,7 @@ class Post(models.Model):
     
     def get_category_type(self):
         return self.get_categoryType_display()
+   
 
 class PostCategory(models.Model):
     postThrough = models.ForeignKey(Post,on_delete=models.CASCADE)

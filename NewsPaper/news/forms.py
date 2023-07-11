@@ -33,7 +33,7 @@ class AddNewsForm(ModelForm):
         model = Post
         #fields = '__all__'
         fields = ['title', 'author', 'categoryType', 'postCategory','content','photo', 'consent'] 
-        
+       
 
 #если делаем форму не завяз на модели
 #class AddNewsForm(forms.Form):   

@@ -148,7 +148,7 @@
           {% block last_news_0%}
             <a style="color: black" href="{% url 'o_news' news.0.id %}"> <!--можно ссылку делать так-->
               <div style="list-style-type:none"> 
-                <div><img style='width: 300px;'src='{{news.0.photo}}'>
+                <div><img style='width: 300px;'src='{{news.0.photo.url}}'>
                 </div>
                 <br>
                 <br>
@@ -177,7 +177,7 @@
           {% block last_news_1%}
             <a style="color: black" href="/one_news/{{news.1.id}}"> <!-- а можно ссылку делать так но это хуже-->
               <div style="list-style-type:none"> 
-                <div><img style='width: 300px;'src='{{news.1.photo}}'>
+                <div><img style='width: 300px;'src='{{news.1.photo.url}}'>
                 </div>
                 <br>
                 <br>
@@ -205,7 +205,7 @@
             {% block choice_news%}
               <a style="color: black" href="{% url 'o_news' news.0.id %}"> <!--можно ссылку делать так-->
                 <div style="list-style-type:none"> 
-                  <div><img style='width: 300px;'src='{{news.0.photo}}'>
+                  <div><img style='width: 300px;'src='{{news.0.photo.url}}'>
                   </div>
                   <br>
                   <br>

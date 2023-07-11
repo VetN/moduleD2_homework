@@ -22,9 +22,12 @@
                             {% endfor %} 
                         </select> 
                         {{form}}-->
+                        <p><label class="form-label" for="{{ form.title.id_for_label }}">{{form.title.label}}: </label>{{ form.title }}</p>
+                        <div class="form-error">{{ form.title.errors }}</div>
+
                         {{form_my.as_p}}
 
-                        <input style="background: none; color:rgba(255, 255, 255, 0.9);" class="get-started-btn scrollto" type="submit" value="Добавить товар"> 
+                        <input style="background: none; color:rgba(255, 255, 255, 0.9);" class="get-started-btn scrollto" type="submit" value="Добавить новость"> 
                     </form>
 
 
@@ -42,7 +45,7 @@
                 <br>
             <a style="color: black" href="{% url 'o_news' news.0.id %}"> <!--можно ссылку делать так-->
                 <div style="list-style-type:none; color: rgba(255, 255, 255, 0.9)"> 
-                  <div><img style='width: 300px;'src='{{news.0.photo}}'>
+                  <div><img style='width: 300px;'src='{{news.0.photo.url}}'>
                   </div>
                   <br>
                   <br>
@@ -70,7 +73,7 @@
           <h6 style="color: black"> All News: {{news| length}}</h6>
           <p >НОВОСТНАЯ ЛЕНТА</p>
         </div>
-      
+        <p><label class="form-label" for="{{ form_my.title.id_for_label }}">{{form_my.title.label}}: </label>{{ form_my.title }}</p>
         <div >
             {% block last_news_2%}
            
@@ -82,7 +85,7 @@
                             <div class="icon-box">
                                 
                                 <div>
-                                  <div><img style='width: 300px;'src='{{n.photo}}'></div>
+                                  <div><img style='width: 300px;'src='{{n.photo.url}}'></div>
                                   <div>
                                       <i style="color: #ffc451" class="ri-check-double-line"></i>
                                       <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> 
