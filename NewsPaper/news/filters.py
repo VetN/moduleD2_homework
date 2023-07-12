@@ -17,16 +17,17 @@ class PostFilter(FilterSet):
         # если сделать корректировку дизайна
         fields = {
             
-            'title': ['icontains'], # мы хотим чтобы нам выводило имя хотя бы отдалённо похожее на то, что запросил пользователь
+            'title': ['iregex'], # мы хотим чтобы нам выводило имя хотя бы отдалённо похожее на то, что запросил пользователь
             'author': ['in'], # количество товаров должно быть больше или равно тому, что указал пользователь
-            'categoryType': ['in'],
+            #'categoryType': ['in'],
+            'content': ['iregex'],
             'time_create':['gt'],# цена должна быть меньше или равна тому, что указал пользователь
         }
         widgets = {
-            'time_create': forms.DateField(),
-             'title': forms.CharField( required = False),
-             'author_in': forms.ModelChoiceField(queryset=Author.objects.all(), required = False,),
-             'categoryType': forms.ModelChoiceField(queryset=Category.objects.all(), required = False, )                         
+            'time_create': forms.DateField(label='Дата создания'),
+            'title': forms.CharField( label='Заголовок', required = False),
+            'author_in': forms.ModelChoiceField(queryset=Author.objects.all(), required = False,),
+            'categoryType': forms.ModelChoiceField(queryset=Category.objects.all(), required = False, )                         
        
         }
                     

@@ -5,35 +5,14 @@
  
     <div class="container" data-aos="fade-up" >
         <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
-            <div class="icon-box">
-                <div style="color:rgba(255, 255, 255, 0.9);">
- 
-                    <form  method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                         <!-- 
-                        <label for="title">ЗАГОЛОВОК</label> <input style="background: none; color:rgba(255, 255, 255, 0.9); margin:20px" class="get-started-btn scrollto" name="title" type="text">
-                        <label for="Author">АВТОР</label> <input style="background: none; color:rgba(255, 255, 255, 0.9);" class="get-started-btn scrollto" name="author" type="text"><br>
-                        <label for="content">ТЕКСТ</label> <input style="background: none; color:rgba(255, 255, 255, 0.9); " class="get-started-btn scrollto" name="content" type="text"><br>
-                     
-                        Здесь будет список категорий. 
-                        <select name="CategoryType" size="4"> 
-                            {% for category in CategoryType %}
-                                <option value="{{ category.id }}">{{ category.name }} </option> 
-                            {% endfor %} 
-                        </select> 
-                        {{form}}-->
-                        <p><label class="form-label" for="{{ form.title.id_for_label }}">{{form.title.label}}: </label>{{ form.title }}</p>
-                        <div class="form-error">{{ form.title.errors }}</div>
-
-                        {{form_my.as_p}}
-
-                        <input style="background: none; color:rgba(255, 255, 255, 0.9);" class="get-started-btn scrollto" type="submit" value="Добавить новость"> 
-                    </form>
-
-
+            <div class="icon-box" style="color:rgba(255, 255, 255, 0.9)">
+                <div style="color:rgba(255, 255, 255, 0.9)">
+                  <form  method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="get-started-btn scrollto" style="margin-right: 0px;" >{{form_my.as_p}}</div><br>
+                      <input class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px;"  type="submit" value="Добавить новость"> 
+                  </form>
                 </div> 
-                
-
                 <br>
                 <br>
                 <h2 style="color:rgba(255, 255, 255, 0.9)">
@@ -73,7 +52,7 @@
           <h6 style="color: black"> All News: {{news| length}}</h6>
           <p >НОВОСТНАЯ ЛЕНТА</p>
         </div>
-        <p><label class="form-label" for="{{ form_my.title.id_for_label }}">{{form_my.title.label}}: </label>{{ form_my.title }}</p>
+        
         <div >
             {% block last_news_2%}
            

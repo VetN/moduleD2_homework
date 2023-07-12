@@ -85,7 +85,7 @@ class SearchList(ListView):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()  
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
-        #context ['news_form'] = NewsForms(self.request.GET or None )
+        context ['news_form'] = NewsForms(self.request.GET or None )
         #context ['filterset'] = self.filterset.qs
         return context
 
@@ -103,25 +103,27 @@ class AddList(ListView):
     context_object_name = 'add_news' 
     queryset = Post.objects.order_by('-id')
     paginate_by = 1
-   
-    form_class = AddNewsForm
+    form_class = AddNewsForm # добавляем форм класс, чтобы получать доступ к форме
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow() 
         context['news'] = Post.objects.order_by('-dataCreation')
        
-        context['form_my'] = AddNewsForm()
+        context['form_my'] = AddNewsForm()# присваиваем название, чтобы обращается к форме через название
         return context
+    
+  
+   
     # если делать руками
-   # def post(self, request, *args, **kwargs):
+    #def post(self, request, *args, **kwargs):
         # берём значения для нового товара из POST-запроса отправленного на сервер
         title = request.POST['title']
         author_id = request.POST['author']
         content = request.POST['content']
         postCategory = request.POST['postCategory']
         #photo = request.POST['photo']
-        post = Post(title=title, author_id =author_id, content=content) # создаём новый товар и сохраняем
+        post = Post(title=title, author_id =author_id, content=content, postCategory=postCategory, ) # создаём новый товар и сохраняем
         post.save()
         return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
     
@@ -129,7 +131,6 @@ class AddList(ListView):
     #если использовать стандартную форму post
     def post(self, request, *args, **kwargs):
         form_my = self.form_class(request.POST, request.FILES) # создаём новую форму, забиваем в неё данные из POST-запроса 
-    
         if form_my.is_valid(): # если пользователь ввёл всё правильно и нигде не накосячил, то сохраняем новый товар
             form_my.save()
  
