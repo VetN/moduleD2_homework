@@ -118,14 +118,14 @@ class AddList(ListView):
     # если делать руками
     #def post(self, request, *args, **kwargs):
         # берём значения для нового товара из POST-запроса отправленного на сервер
-        title = request.POST['title']
-        author_id = request.POST['author']
-        content = request.POST['content']
-        postCategory = request.POST['postCategory']
+        #title = request.POST['title']
+        #author_id = request.POST['author']
+        #content = request.POST['content']
+        #postCategory = request.POST['postCategory']
         #photo = request.POST['photo']
-        post = Post(title=title, author_id =author_id, content=content, postCategory=postCategory, ) # создаём новый товар и сохраняем
-        post.save()
-        return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
+        #post = Post(title=title, author_id =author_id, content=content, postCategory=postCategory, ) # создаём новый товар и сохраняем
+        #post.save()
+        #return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
     
     
     #если использовать стандартную форму post
