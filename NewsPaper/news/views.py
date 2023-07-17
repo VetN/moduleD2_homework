@@ -1,8 +1,8 @@
 
 
 from django.http import HttpResponseNotFound
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.shortcuts import redirect, render
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import *
 
@@ -85,7 +85,7 @@ class SearchList(ListView):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()  
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
-        context ['news_form'] = NewsForms(self.request.GET or None )
+        #context ['news_form'] = NewsForms(self.request.GET or None )
         #context ['filterset'] = self.filterset.qs
         return context
 
@@ -94,48 +94,98 @@ class SearchList(ListView):
         self.filterset =PostFilter(self.request.GET, queryset)
         return self.filterset.qs
     
-    
+
+
+class NewsEditView(ListView):
+    template_name = 'flatpages/edit.html'
+    context_object_name = 'news' 
+    queryset = Post.objects.order_by('-id')
+    paginate_by = 6
     
 
-class AddList(ListView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['time_now'] = datetime.utcnow()
+        #context['choices'] = Post.TYPE_CHOICES
+        context['form_my'] = AddNewsForm()
+        return context    
+    
+class NewsDetail(DetailView):
+    model = Post
+    template_name = 'flatpages/news_detail.html' 
+    context_object_name = 'news_detail'
+    form_class = AddNewsForm
+
+
+class AddNewsCreate(CreateView):
     model = Post 
     template_name = 'flatpages/add_news.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
     context_object_name = 'add_news' 
     queryset = Post.objects.order_by('-id')
-    paginate_by = 1
-    form_class = AddNewsForm # добавляем форм класс, чтобы получать доступ к форме
+    form_class = AddNewsForm
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow() 
         context['news'] = Post.objects.order_by('-dataCreation')
        
-        context['form_my'] = AddNewsForm()# присваиваем название, чтобы обращается к форме через название
+        context['form_my'] = AddNewsForm()
         return context
-    
-  
-   
     # если делать руками
-    #def post(self, request, *args, **kwargs):
+   # def post(self, request, *args, **kwargs):
         # берём значения для нового товара из POST-запроса отправленного на сервер
-        #title = request.POST['title']
-        #author_id = request.POST['author']
-        #content = request.POST['content']
-        #postCategory = request.POST['postCategory']
+        title = request.POST['title']
+        author_id = request.POST['author']
+        content = request.POST['content']
+        postCategory = request.POST['postCategory']
         #photo = request.POST['photo']
-        #post = Post(title=title, author_id =author_id, content=content, postCategory=postCategory, ) # создаём новый товар и сохраняем
-        #post.save()
-        #return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
+        post = Post(title=title, author_id =author_id, content=content) # создаём новый товар и сохраняем
+        post.save()
+        return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
     
     
     #если использовать стандартную форму post
     def post(self, request, *args, **kwargs):
         form_my = self.form_class(request.POST, request.FILES) # создаём новую форму, забиваем в неё данные из POST-запроса 
-        if form_my.is_valid(): # если пользователь ввёл всё правильно и нигде не накосячил, то сохраняем новый товар
+    
+        if form_my.is_valid():
+            obj = form_my.save()# чтобы записи не клонировались переход на другую страницу
+            #return redirect('o_news', pk=obj.pk)
+            return redirect('edit')
+        else:
+            return redirect('news_page') # если пользователь ввёл всё правильно и нигде не накосячил, то сохраняем новый товар
             form_my.save()
  
         return super().get(request, *args, **kwargs)
 
+
+class NewsUpdateView(UpdateView):
+        model = Post
+        template_name = 'flatpages/edit_news.html' 
+        form_class = AddNewsForm
+        success_url = '/news/'
+         # метод get_object мы используем вместо queryset, 
+         # чтобы получить информацию об объекте который мы собираемся редактировать
+        #def get_object(self, **kwargs):
+            #id = self.kwargs.get('pk')
+            #return Post.objects.get(pk=id)
+            
+        #def get_context_data(self, **kwargs):
+            #context = super().get_context_data(**kwargs)
+            #context['form_my'] = AddNewsForm()# присваиваем название, чтобы обращается к форме через название
+            #return context
+
+
+class NewsDeleteView(DeleteView):
+    model = Post
+    template_name = 'flatpages/delete.html'
+    success_url = '/news/'
+    #form_class = AddNewsForm
+    
+    #def get_object(self, **kwargs):
+      #  id = self.kwargs.get('pk')
+       # return Post.objects.get(pk=id)
 
 def pageNotFound(request, exception):
    return HttpResponseNotFound('<h1>Страница не найдена</h1>')

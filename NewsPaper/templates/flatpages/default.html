@@ -44,9 +44,10 @@
           <li><a class="nav-link scrollto" href="#contact">КОНТАКТЫ</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
+      <a href="{% url 'edit' %}" class="get-started-btn scrollto">РЕДАКТИРОВАТЬ</a>
       <a href="{% url 'add_news' %}" class="get-started-btn scrollto">ДОБАВИТЬ НОВОСТЬ</a>
-      <a href="{% url 'search' %}" class="get-started-btn scrollto">ПОИСК НОВОСТЕЙ</a>
+      <a href="{% url 'search' %}" class="get-started-btn scrollto">ПОИСК</a>
       <a href="{% url 'news_page' %}" class="get-started-btn scrollto">ВСЕ НОВОСТИ</a>
     </div>
   </header><!-- End Header -->
