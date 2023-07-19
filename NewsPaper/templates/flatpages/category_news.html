@@ -23,7 +23,7 @@
                 {% if 'category_sort' %}
                   
                     {% for n in category_sort %}
-                    <a style="color: black" href="/one_news/{{n.id}}">
+                    <a style="color: black" href="{% url 'o_news' n.id %}">
                         <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                             <div class="icon-box"><div>
                                   <div><img style='width: 300px;'src='{{n.photo.url}}'></div><div>

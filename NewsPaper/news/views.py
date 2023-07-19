@@ -12,25 +12,24 @@ from datetime import datetime
 
 
 class NewsList(ListView):
-    model = Post  # указываем модель, объекты которой мы будем выводить
-    template_name = 'flatpages/news.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
-    context_object_name = 'news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
-    queryset = Post.objects.order_by('-id') # выводит список с конца не обяз по id делать
+    model = Post 
+    template_name = 'flatpages/news.html' 
+    context_object_name = 'news' 
+    queryset = Post.objects.order_by('-id')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()
-        #context['all_posts'] = Post.objects.all()
-        context['all_posts'] = Post.objects.order_by('-dataCreation') # переворачивает список
+        context['all_posts'] = Post.objects.order_by('-dataCreation') 
         return context
 
 
 
 
 class NewsListMain(ListView):
-    model = Post  # указываем модель, объекты которой мы будем выводить
-    template_name = 'flatpages/index.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
-    context_object_name = 'l_news'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
+    model = Post  
+    template_name = 'flatpages/index.html'  
+    context_object_name = 'l_news' 
     queryset = Post.objects.order_by('-id')
     ordering = ['-dataCreation']
     paginate_by = 2
@@ -47,14 +46,12 @@ class NewsListMain(ListView):
 class NewsCategory(ListView):
     model = Post 
     template_name = 'flatpages/category_news.html' 
-    context_object_name = 'news_category'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
+    context_object_name = 'news_category'
     
   
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category_sort'] = Post.objects.order_by('-id').filter(postCategory=self.kwargs['pk'])
-        #context['category_sort']= Post.objects.filter(postCategory=self.kwargs['pk'])
-        # возьмет все посты отфильтрует по пост категории= по рк ( а в url адресе у нас тоже заложен рк) 
         return context
 
 
@@ -64,9 +61,8 @@ class NewsDetail(DetailView):
     model = Post
     template_name = 'flatpages/one_news.html' 
     context_object_name = 'one_news'
+    queryset = Post.objects.all()
 
-def news(request):
-    return render(request, 'flatpages/news.html', {'title':'все новости'}) 
 
  
 
@@ -100,26 +96,29 @@ class NewsEditView(ListView):
     template_name = 'flatpages/edit.html'
     context_object_name = 'news' 
     queryset = Post.objects.order_by('-id')
+    #ordering = ['-dataCreation']
     paginate_by = 6
+    form_class = AddNewsForm
     
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()
+        context['news'] = Post.objects.order_by('-id') 
         #context['choices'] = Post.TYPE_CHOICES
         context['form_my'] = AddNewsForm()
         return context    
     
-class NewsDetail(DetailView):
-    model = Post
-    template_name = 'flatpages/news_detail.html' 
-    context_object_name = 'news_detail'
-    form_class = AddNewsForm
+#class NewsDetail(DetailView):
+   # model = Post
+    #template_name = 'flatpages/news_detail.html' 
+    #context_object_name = 'news_detail'
+    #form_class = AddNewsForm
 
 
 class AddNewsCreate(CreateView):
     model = Post 
-    template_name = 'flatpages/add_news.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
+    template_name = 'flatpages/add_news.html' 
     context_object_name = 'add_news' 
     queryset = Post.objects.order_by('-id')
     form_class = AddNewsForm
@@ -127,49 +126,38 @@ class AddNewsCreate(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['time_now'] = datetime.utcnow() 
-        context['news'] = Post.objects.order_by('-dataCreation')
-       
         context['form_my'] = AddNewsForm()
         return context
-    # если делать руками
-   # def post(self, request, *args, **kwargs):
-        # берём значения для нового товара из POST-запроса отправленного на сервер
-        title = request.POST['title']
-        author_id = request.POST['author']
-        content = request.POST['content']
-        postCategory = request.POST['postCategory']
-        #photo = request.POST['photo']
-        post = Post(title=title, author_id =author_id, content=content) # создаём новый товар и сохраняем
-        post.save()
-        return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
-    
     
     #если использовать стандартную форму post
     def post(self, request, *args, **kwargs):
         form_my = self.form_class(request.POST, request.FILES) # создаём новую форму, забиваем в неё данные из POST-запроса 
     
         if form_my.is_valid():
-            obj = form_my.save()# чтобы записи не клонировались переход на другую страницу
+            form_my.save()
+            #obj = form_my.save()# чтобы записи не клонировались переход на другую страницу
             #return redirect('o_news', pk=obj.pk)
             return redirect('edit')
         else:
-            return redirect('news_page') # если пользователь ввёл всё правильно и нигде не накосячил, то сохраняем новый товар
-            form_my.save()
+            return redirect('news_page') 
+            #form_my.save()
  
-        return super().get(request, *args, **kwargs)
+        #return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
+    
+    
+    
 
 
 class NewsUpdateView(UpdateView):
-        model = Post
+        #model = Post
         template_name = 'flatpages/edit_news.html' 
         form_class = AddNewsForm
-        success_url = '/news/'
+        #success_url = '/news/'
          # метод get_object мы используем вместо queryset, 
          # чтобы получить информацию об объекте который мы собираемся редактировать
-        #def get_object(self, **kwargs):
-            #id = self.kwargs.get('pk')
-            #return Post.objects.get(pk=id)
+        def get_object(self, **kwargs):
+            id = self.kwargs.get('pk')
+            return Post.objects.get(pk=id)
             
         #def get_context_data(self, **kwargs):
             #context = super().get_context_data(**kwargs)
@@ -199,3 +187,6 @@ def pageNotFound_403(request, exception):
 
 #def pageNotFound_400(request, exception):
  #   return HttpResponseNotFound('<h1>невозможно обработать запрос</h1>')
+
+#def news(request):
+   # return render(request, 'flatpages/news.html', {'title':'все новости'}) 
