@@ -106,28 +106,24 @@ class NewsEditView(ListView):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()
         context['news'] = Post.objects.order_by('-id') 
-        #context['choices'] = Post.TYPE_CHOICES
+        
         context['form_my'] = AddNewsForm()
-        return context    
-    
-#class NewsDetail(DetailView):
-   # model = Post
-    #template_name = 'flatpages/news_detail.html' 
-    #context_object_name = 'news_detail'
-    #form_class = AddNewsForm
+        return context 
+
 
 
 class AddNewsCreate(CreateView):
-    model = Post 
+    #model = Post 
     template_name = 'flatpages/add_news.html' 
-    context_object_name = 'add_news' 
-    queryset = Post.objects.order_by('-id')
+    #context_object_name = 'add_news' 
+    #queryset = Post.objects.order_by('-id')
     form_class = AddNewsForm
 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form_my'] = AddNewsForm()
+        
         return context
     
     #если использовать стандартную форму post
@@ -151,25 +147,24 @@ class AddNewsCreate(CreateView):
 
 class NewsUpdateView(UpdateView):
         #model = Post
-        template_name = 'flatpages/edit_news.html' 
+        template_name = 'flatpages/add_news.html' 
         form_class = AddNewsForm
-        queryset = Post.objects.all()
-        success_url = '/edit/'
-        #success_url = '/news/'
+       
+       
          # метод get_object мы используем вместо queryset, 
          # чтобы получить информацию об объекте который мы собираемся редактировать
         def get_object(self, **kwargs):
             id = self.kwargs.get('pk')
             return Post.objects.get(pk=id)
             
-        #def get_context_data(self, **kwargs):
-            #context = super().get_context_data(**kwargs)
-            #context['form_my'] = AddNewsForm()# присваиваем название, чтобы обращается к форме через название
-            #return context
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['form_my'] = AddNewsForm()# присваиваем название, чтобы обращается к форме через название
+            return context
 
 
 class NewsDeleteView(DeleteView):
-    model = Post
+    #model = Post
     template_name = 'flatpages/delete.html'
     queryset = Post.objects.all()
     success_url = '/edit/'
