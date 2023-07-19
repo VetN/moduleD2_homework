@@ -10,7 +10,7 @@
                   
             <form  method="POST" enctype="multipart/form-data">
               {% csrf_token %}
-                <div class="get-started-btn_f scrollto " style="margin-right: 0px;" >{{form_my.as_p}}</div><br>
+                <div class="get-started-btn_f scrollto " style="margin-right: 0px;" >{{form.as_p}}</div><br>
                 <input class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px;"  type="submit" value="Добавить новость"> 
             </form>
                 
