@@ -2,6 +2,7 @@
 
 from django.http import HttpResponseNotFound
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import *
@@ -152,6 +153,8 @@ class NewsUpdateView(UpdateView):
         #model = Post
         template_name = 'flatpages/edit_news.html' 
         form_class = AddNewsForm
+        queryset = Post.objects.all()
+        success_url = '/edit/'
         #success_url = '/news/'
          # метод get_object мы используем вместо queryset, 
          # чтобы получить информацию об объекте который мы собираемся редактировать
@@ -168,12 +171,10 @@ class NewsUpdateView(UpdateView):
 class NewsDeleteView(DeleteView):
     model = Post
     template_name = 'flatpages/delete.html'
-    success_url = '/news/'
-    #form_class = AddNewsForm
-    
-    #def get_object(self, **kwargs):
-      #  id = self.kwargs.get('pk')
-       # return Post.objects.get(pk=id)
+    queryset = Post.objects.all()
+    success_url = '/edit/'
+   
+   
 
 def pageNotFound(request, exception):
    return HttpResponseNotFound('<h1>Страница не найдена</h1>')
