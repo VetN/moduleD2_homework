@@ -1,30 +1,45 @@
 from django import forms
-from django_filters import FilterSet
-#import django_filters as filters
+from django_filters import FilterSet, CharFilter, ChoiceFilter
+
 
 
 from .models import*
 
 class PostFilter(FilterSet):
-    
-
-    # Здесь в мета классе надо предоставить модель и указать поля, по которым будет фильтроваться (т.е. подбираться) информация о товарах
-    class Meta:
-        model = Post
-
-
-        #fields = ('name', 'price', 'quantity', 'category') # поля, которые мы будем фильтровать (т.е. отбирать по каким-то критериям, имена берутся из моделей)
-        # если сделать корректировку дизайна
-        fields = {
-            
-            'title': ['iregex'], # мы хотим чтобы нам выводило имя хотя бы отдалённо похожее на то, что запросил пользователь
-            'author': ['in'], # количество товаров должно быть больше или равно тому, что указал пользователь
-            'categoryType': ['in'],
-            'time_create':['gt'],# цена должна быть меньше или равна тому, что указал пользователь
-            'content': ['iregex'],
-        }
-       
-                    
-
-       
-        #fields=('title', 'author', 'postCategory', 'time_create')
+    name = CharFilter(field_name='title', 
+                      widget=forms.TextInput(), 
+                      label='ПОИСК ПО ЗАГОЛОВКУ', 
+                      lookup_expr='iregex',
+                      required = False,
+                      )
+    author = CharFilter(
+                      field_name='author__authorUser__first_name',
+                      widget=forms.TextInput(attrs={'placeholder':'фамилия автора',
+                                                   'class':'get-started-btn_f scrollto'  }),
+                      label='АВТОР',
+                      lookup_expr='iregex',
+                      required = False
+                    )
+    content = CharFilter(
+                      field_name='content',
+                      widget=forms.TextInput(),
+                      label='ТЕКСТ',
+                      lookup_expr='iregex',
+                     required = False
+                    )
+    categoryType = ChoiceFilter(label='КАТЕГОРИЯ',
+                                choices = [
+                                    ('AR', 'СТАТЬЯ'),
+                                    ('NW', 'НОВОСТЬ'),
+                                ]
+                               )
+    postCategory = ChoiceFilter(label='РАЗДЕЛ',
+                                choices = [
+                                    ('1', 'город'),
+                                    ('2', 'дети'),
+                                    ('3', 'культура'),
+                                    ('4', 'образование'),
+                                    ('5', 'красота'),
+                                    ('6', 'животные'),
+                            
+                                ])
