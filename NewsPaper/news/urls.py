@@ -16,7 +16,7 @@ urlpatterns = [
 
 
     path('add_news/', AddNewsCreate.as_view(), name = 'add_news' ),
-    path('add_news/<int:pk>/', NewsUpdateView.as_view(), name = 'edit_news'),
+    path('update_news/<int:pk>/', NewsUpdateView.as_view(), name = 'edit_news'),
     path('delete/<int:pk>/', NewsDeleteView.as_view(), name='news_delete'),
    
     #path('category_news/<slug:category_name>/', NewsCategory.as_view(), name = 'category') тоже работает в строке дает назв категории

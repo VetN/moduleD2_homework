@@ -157,10 +157,10 @@ class NewsUpdateView(UpdateView):
             id = self.kwargs.get('pk')
             return Post.objects.get(pk=id)
             
-        def get_context_data(self, **kwargs):
-            context = super().get_context_data(**kwargs)
-            context['form_my'] = AddNewsForm()# присваиваем название, чтобы обращается к форме через название
-            return context
+        #def get_context_data(self, **kwargs):
+            #context = super().get_context_data(**kwargs)
+            #context['form_my'] = AddNewsForm()# присваиваем название, чтобы обращается к форме через название
+            #return context
 
 
 class NewsDeleteView(DeleteView):
