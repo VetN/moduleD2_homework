@@ -107,7 +107,7 @@ class NewsEditView(ListView):
         context['time_now'] = datetime.utcnow()
         context['news'] = Post.objects.order_by('-id') 
         
-        context['form_my'] = AddNewsForm()
+        #context['form_my'] = AddNewsForm()
         return context 
 
 
@@ -128,10 +128,10 @@ class AddNewsCreate(CreateView):
     
     #если использовать стандартную форму post
     def post(self, request, *args, **kwargs):
-        form_my = self.form_class(request.POST, request.FILES) # создаём новую форму, забиваем в неё данные из POST-запроса 
+        form = self.form_class(request.POST, request.FILES) # создаём новую форму, забиваем в неё данные из POST-запроса 
     
-        if form_my.is_valid():
-            form_my.save()
+        if form.is_valid():
+            form.save()
             #obj = form_my.save()# чтобы записи не клонировались переход на другую страницу
             #return redirect('o_news', pk=obj.pk)
             return redirect('edit')
@@ -149,7 +149,7 @@ class NewsUpdateView(UpdateView):
         #model = Post
         template_name = 'flatpages/add_news.html' 
         form_class = AddNewsForm
-       
+        success_url = '/edit/'
        
          # метод get_object мы используем вместо queryset, 
          # чтобы получить информацию об объекте который мы собираемся редактировать
