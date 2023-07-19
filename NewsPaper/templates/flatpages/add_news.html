@@ -4,89 +4,21 @@
 {% block main_content %}
  
     <div class="container" data-aos="fade-up" >
-        <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
-            <div class="icon-box" style="color:rgba(255, 255, 255, 0.9)">
-                <div style="color:rgba(255, 255, 255, 0.9)">
+      <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
+        <div class="icon-box" style="color:rgba(255, 255, 255, 0.9)">
+          <div style="color:rgba(255, 255, 255, 0.9)">
                   
-                  <form  method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                      <div class="get-started-btn_f scrollto " style="margin-right: 0px;" >{{form_my.as_p}}</div><br>
-                      <input class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px;"  type="submit" value="Добавить новость"> 
-                  </form>
+            <form  method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="get-started-btn_f scrollto " style="margin-right: 0px;" >{{form_my.as_p}}</div><br>
+                <input class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px;"  type="submit" value="Добавить новость"> 
+            </form>
                 
-                </div> 
-                <br>
-                <br>
-                <h2 style="color:rgba(255, 255, 255, 0.9)">
-                    <i style="color: #ffc451" class="ri-check-double-line"></i>
-                    ПОСЛЕДНЯЯ НОВОСТЬ
-                    <i style="color: #ffc451" class="ri-check-double-line"></i> 
-                     
-                </h2>
-                <br>
-            <a style="color: black" href="{% url 'o_news' news.0.id %}"> <!--можно ссылку делать так-->
-                <div style="list-style-type:none; color: rgba(255, 255, 255, 0.9)"> 
-                  <div><img style='width: 300px;'src='{{news.0.photo.url}}'>
-                  </div>
-                  <br>
-                  <br>
-                  <h4>{{news.0.title}}
-                  <br>
-                    <span style="font-weight:300; font-size:18px"> 
-                      ( раздел: {{news.0.get_category_type}} )<br>
-                      Автор: {{news.0.author.authorUser.username}} {{news.0.author.authorUser.first_name}}
-                    </span>
-                  </h4>
-                  {{news.0.content|truncatewords:20|censor}}
-                  <br>
-                  <br> 
-                </div>
-              </a>
-            </div>
-            
-        </div>
-    </div>
-     
-    <section id="services" class="services">
-      <div  style="background:white;" class="container" data-aos="fade-up">
-        <div style="text-align:left" class="section-title">
-          <h4 style="color: black">{{time_now|date:'d M Y'}}</h4>
-          <h6 style="color: black"> All News: {{news| length}}</h6>
-          <p >НОВОСТНАЯ ЛЕНТА</p>
-        </div>
-        
-        <div >
-            {% block last_news_2%}
-           
-                {% if news %}
-                  
-                    {% for n in news %}
-                    <a style="color: black" href="{% url 'o_news' n.id %}">
-                        <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="icon-box">
-                                
-                                <div>
-                                  <div><img style='width: 300px;'src='{{n.photo.url}}'></div>
-                                  <div>
-                                      <i style="color: #ffc451" class="ri-check-double-line"></i>
-                                      <h4>{{n.title}}<br><span style="font-weight:300; font-size:18px"> 
-                                      ( Раздел: {{n.get_category_type}} )<br>Автор:<span style="font-weight:600"> 
-                                      {{n.author.authorUser.username}} {{n.author.authorUser.first_name}}</span></h4>
-                                      <br>{{n.content|truncatewords:10|censor}}<br> 
-                                       <span style='color: rgey'>{{n.dataCreation|date:'d M Y'}}</span></div>
-                                  </div>
-                                </div>
-                        </div>
-                      </a>
-                    {%endfor%}
-                    {% include 'flatpages/parts/paginator.html' %}
-                {% else %}
-                        <h4> Новостей нет </h4>
-                {% endif %}
-              
-            {% endblock last_news_2 %}
+          </div> 
         </div>
       </div>
-    </section>
+    </div>
+  </div>   
+</section>
     
 {% endblock main_content %}
