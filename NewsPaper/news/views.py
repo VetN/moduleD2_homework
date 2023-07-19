@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from .forms import *
 
-from .filters import PostFilter # импортируем класс(будет выводить список объектов из БД) DetailView- отвечает за детали(за 1 продукт)
+from .filters import PostFilter
 from .models import *
 from datetime import datetime
 
@@ -70,9 +70,9 @@ class NewsDetail(DetailView):
 
 
 class SearchList(ListView):
-    model = Post  # указываем модель, объекты которой мы будем выводить
-    template_name = 'flatpages/search.html'  # указываем имя шаблона, в котором будет лежать HTML, в нём будут все инструкции о том, как именно пользователю должны вывестись наши объекты
-    context_object_name = 'search'  # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через HTML-шаблон
+    model = Post  
+    template_name = 'flatpages/search.html'  
+    context_object_name = 'search' 
     ordering = ['-time_create']
     queryset = Post.objects.order_by('-id')
     paginate_by = 7
