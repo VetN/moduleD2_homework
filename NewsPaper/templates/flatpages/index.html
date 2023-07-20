@@ -115,7 +115,7 @@
     <div class="section-title">
       <h2>News</h2>
       <p>ПОСЛЕДНИЕ НОВОСТИ</p>
-      <h6 style="color: black">{{time_now|date:'d M Y'}}</h6>
+      <h6 style="color: black">{{time_now|date:'d m Y'}}</h6>
     </div>
              
     <div class="row">
@@ -155,7 +155,7 @@
           </div>
                     
           {% block last_news_1%}
-            <a style="color: black" href="/one_news/{{news.1.id}}"> <!-- а можно ссылку делать так но это хуже-->
+            <a style="color: black" href="{% url 'o_news' news.1.id %}"> <!-- а можно ссылку делать так но это хуже-->
               <div style="list-style-type:none"> 
                 <div><img style='width: 300px;'src='{{news.1.photo.url}}'>
                 </div>
@@ -183,20 +183,20 @@
           </div>
                     
             {% block choice_news%}
-              <a style="color: black" href="{% url 'o_news' news.0.id %}"> <!--можно ссылку делать так-->
+              <a style="color: black" href="{% url 'o_news' news.2.id %}"> <!--можно ссылку делать так-->
                 <div style="list-style-type:none"> 
-                  <div><img style='width: 300px;'src='{{news.0.photo.url}}'>
+                  <div><img style='width: 300px;'src='{{news.2.photo.url}}'>
                   </div>
                   <br>
                   <br>
-                  <h4>{{news.0.title}}
+                  <h4>{{news.2.title}}
                   <br>
                     <span style="font-weight:300; font-size:18px"> 
-                      ( раздел: {{news.0.get_category_type}} )<br>
-                      Автор: {{news.0.author.authorUser.username}} {{news.0.author.authorUser.first_name}}
+                      ( раздел: {{news.2.get_category_type}} )<br>
+                      Автор: {{news.2.author.authorUser.username}} {{news.2.author.authorUser.first_name}}
                     </span>
                   </h4>
-                  {{news.0.content|truncatewords:20|censor}}
+                  {{news.2.content|truncatewords:20|censor}}
                   <br>
                   <br>
                 </div>

@@ -1,8 +1,8 @@
 
 
 from django.http import HttpResponseNotFound
-from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
+from django.shortcuts import redirect
+#from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import *
@@ -82,6 +82,7 @@ class SearchList(ListView):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()  
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
+        #context['choices'] = Post.CATEGORY_CHOICES если делать в фильтре 'exact'
         #context ['news_form'] = NewsForms(self.request.GET or None )
         #context ['filterset'] = self.filterset.qs
         return context
@@ -113,17 +114,13 @@ class NewsEditView(ListView):
 
 
 class AddNewsCreate(CreateView):
-    #model = Post 
+    
     template_name = 'flatpages/add_news.html' 
-    #context_object_name = 'add_news' 
-    #queryset = Post.objects.order_by('-id')
     form_class = AddNewsForm
 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        #context['form_my'] = AddNewsForm()
-        
         return context
     
     #если использовать стандартную форму post
@@ -137,9 +134,7 @@ class AddNewsCreate(CreateView):
             return redirect('edit')
         else:
             return redirect('news_page') 
-            #form_my.save()
- 
-        #return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
+           #return super().get(request, *args, **kwargs) # отправляем пользователя обратно на GET-запрос.
     
     
     
@@ -157,10 +152,7 @@ class NewsUpdateView(UpdateView):
             id = self.kwargs.get('pk')
             return Post.objects.get(pk=id)
             
-        #def get_context_data(self, **kwargs):
-            #context = super().get_context_data(**kwargs)
-            #context['form_my'] = AddNewsForm()# присваиваем название, чтобы обращается к форме через название
-            #return context
+     
 
 
 class NewsDeleteView(DeleteView):
