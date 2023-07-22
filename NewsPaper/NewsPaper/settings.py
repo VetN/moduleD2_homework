@@ -69,7 +69,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.yandex',
     'allauth.socialaccount.providers.odnoklassniki',
-   'django_apscheduler',
+   #
+   # 'django_apscheduler',
     
 ]
 
