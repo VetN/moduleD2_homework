@@ -27,7 +27,10 @@ urlpatterns = [
     #path('pages/', include('django.contrib.flatpages.urls')),
     path('',include('news.urls')),
     #path('news/',include('news.urls')),
+    path('sign/', include('sign.urls')),
+    path('user/', include('protect.urls')),
     #path('one_news/', include('news.urls')),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

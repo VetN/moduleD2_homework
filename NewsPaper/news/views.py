@@ -11,6 +11,10 @@ from .filters import PostFilter
 from .models import *
 from datetime import datetime
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+
 
 class NewsList(ListView):
     model = Post 
@@ -94,7 +98,7 @@ class SearchList(ListView):
     
 
 
-class NewsEditView(ListView):
+class NewsEditView(LoginRequiredMixin, ListView):
     template_name = 'flatpages/edit.html'
     context_object_name = 'news' 
     queryset = Post.objects.order_by('-id')
@@ -113,7 +117,7 @@ class NewsEditView(ListView):
 
 
 
-class AddNewsCreate(CreateView):
+class AddNewsCreate(LoginRequiredMixin, CreateView):
     
     template_name = 'flatpages/add_news.html' 
     form_class = AddNewsForm
@@ -160,8 +164,9 @@ class NewsDeleteView(DeleteView):
     template_name = 'flatpages/delete.html'
     queryset = Post.objects.all()
     success_url = '/edit/'
-   
-   
+
+
+
 
 def pageNotFound(request, exception):
    return HttpResponseNotFound('<h1>Страница не найдена</h1>')

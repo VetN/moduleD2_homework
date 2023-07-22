@@ -29,6 +29,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# настройка для allauch пишем сами 
+#AUTHENTICATION_BACKENDS = [
+   # Needed to login by username in Django admin, regardless of `allauth`
+  # 'django.contrib.auth.backends.ModelBackend',
+  
+   # `allauth` specific authentication methods, such as login by e-mail
+ #  'allauth.account.auth_backends.AuthenticationBackend',
+#]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +58,18 @@ INSTALLED_APPS = [
     'news',
     'account',
     'static',
+
+    'sign',
+    'protect',
+
+   # 'allauth',
+   # 'allauth.account',
+   # 'allauth.socialaccount',
+   # 'allauth.socialaccount.providers.google',
+   # 'allauth.socialaccount.providers.vk',
+   # 'allauth.socialaccount.providers.yandex',
+   # 'allauth.socialaccount.providers.odnoklassniki',
+  #  'django_apscheduler',
     
 ]
 
@@ -141,3 +162,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR ,'media/')
 MEDIA_URL = '/media/'
+
+
+LOGIN_URL = '/sign/login/'
+LOGIN_REDIRECT_URL = '/'
