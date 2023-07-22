@@ -27,9 +27,14 @@ urlpatterns = [
     #path('pages/', include('django.contrib.flatpages.urls')),
     path('',include('news.urls')),
     #path('news/',include('news.urls')),
+    #path('one_news/', include('news.urls')),
+    
+    # пути для регистрации 
     path('sign/', include('sign.urls')),
     path('user/', include('protect.urls')),
-    #path('one_news/', include('news.urls')),
+    
+    # прописываем путь при allauch
+    path('accounts/', include('allauth.urls')),
 
 ]
 if settings.DEBUG:

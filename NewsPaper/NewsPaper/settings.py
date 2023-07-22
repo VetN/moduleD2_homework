@@ -30,13 +30,13 @@ ALLOWED_HOSTS = []
 
 
 # настройка для allauch пишем сами 
-#AUTHENTICATION_BACKENDS = [
+AUTHENTICATION_BACKENDS = [
    # Needed to login by username in Django admin, regardless of `allauth`
-  # 'django.contrib.auth.backends.ModelBackend',
+   'django.contrib.auth.backends.ModelBackend',
   
    # `allauth` specific authentication methods, such as login by e-mail
- #  'allauth.account.auth_backends.AuthenticationBackend',
-#]
+   'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Application definition
 
@@ -56,20 +56,20 @@ INSTALLED_APPS = [
     
 
     'news',
-    'account',
+    'accounts',
     'static',
 
     'sign',
     'protect',
 
-   # 'allauth',
-   # 'allauth.account',
-   # 'allauth.socialaccount',
-   # 'allauth.socialaccount.providers.google',
-   # 'allauth.socialaccount.providers.vk',
-   # 'allauth.socialaccount.providers.yandex',
-   # 'allauth.socialaccount.providers.odnoklassniki',
-  #  'django_apscheduler',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.yandex',
+    'allauth.socialaccount.providers.odnoklassniki',
+   'django_apscheduler',
     
 ]
 
@@ -164,5 +164,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR ,'media/')
 MEDIA_URL = '/media/'
 
 
-LOGIN_URL = '/sign/login/'
+#LOGIN_URL = '/sign/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
+# регистрация/ авторизация по почте
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none' # отправление подтверждения на почту
