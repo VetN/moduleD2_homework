@@ -242,6 +242,24 @@ h6 {
   background: none;
   color:rgba(255, 255, 255, 0.9);
 }
+.get-started-btn_6 {
+  background: none;
+  color:rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  padding: 2px 5px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+  display: inline-block;
+  border: 2px solid #ffc451;
+  width: 30%;
+  margin-left: 20px;
+ 
+}
+.get-started-btn_6:hover {
+  background: none;
+  color:rgba(255, 255, 255, 0.9);
+}
 
 .get-started-btn_4 {
   background: none;

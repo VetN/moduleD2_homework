@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group
 
 
 class RegisterForm(UserCreationForm):
-   password1 = forms.CharField(max_length=16, widget=forms.PasswordInput(attrs={'class': 'form-control'}), label='Password')
+   password1 = forms.CharField(max_length=16, widget=forms.PasswordInput(attrs={'class': 'form-control'}), label='ПА')
    password2 = forms.CharField(max_length=16, widget=forms.PasswordInput(attrs={'class': 'form-control'}), label='Confirm Password')
   
    class Meta:
@@ -20,7 +20,7 @@ class RegisterForm(UserCreationForm):
        widgets = {
            'username': forms.TextInput(attrs={'class': 'form-control'}),
            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-           'email': forms.EmailInput(attrs={'class': 'form-control'}),
+           'email': forms.EmailInput(attrs={'class': 'get-started-btn_1 scrollto'}),
        }
       
    def clean(self):
@@ -35,8 +35,14 @@ class RegisterForm(UserCreationForm):
 # Добавляем новую форму для аутентификации пользователя
 class LoginForm(AuthenticationForm):
     class Meta:
-       model = User
-       fields = (
+        model = User
+        fields = (
          "username",
          "password",
            )
+        widgets = {
+           'username': forms.TextInput(attrs={'class': 'my_form'}),
+            #'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+           'email': forms.EmailInput(attrs={'class': 'get-started-btn_1 scrollto'}),
+       }
+

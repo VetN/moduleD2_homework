@@ -1,0 +1,60 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+  <div class="container" data-aos="fade-up" >
+    <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
+      <div class="icon-box" style="color:rgba(255, 255, 255, 0.9)">
+        <div style="color:rgba(255, 255, 255, 0.9)">
+          <div class="get-started-btn_f scrollto " >
+
+            <h2>{% trans "ВХОД" %}</h2>
+
+              {% get_providers as socialaccount_providers %}
+
+                {% if socialaccount_providers %}
+                  <p>
+                    {% blocktrans with site.name as site_name %}
+                      Пожалуйста, войдите с помощью одной из своих учетных записей:<br>
+  
+                    {% endblocktrans %}
+                  </p>
+
+                  <div class="socialaccount_ballot">
+                    <ul class="socialaccount_providers">
+                      {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                    </ul>
+                  </div>
+                  {% include "socialaccount/snippets/login_extra.html" %}
+                  
+                  <a href="{{ signup_url }}">ЗАРЕГИСТРИРОВАТЬСЯ НА САЙТЕ</a>
+                  <br>
+                  <br>
+                  <p>или войдите по паролю</p>
+                  
+                  <form class="login" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "забыли пароль?" %}</a>
+                    <button type="submit" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px;">{% trans "ВОЙТИ" %}</button>
+                  </form>
+                {% else %}
+                  <p>
+                    {% blocktrans %}Если у вас нет аккаунта, то зарегистрируйтесь
+                      <a href="{{ signup_url }}">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+                    {% endblocktrans %}
+                  </p>
+                {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

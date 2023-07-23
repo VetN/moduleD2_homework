@@ -1,8 +1,9 @@
 
+
 from django import forms
 from .models import *
 from django.forms import ModelForm, BooleanField # Импортируем true-false поле
-
+from allauth.account.forms import SignupForm, BaseSignupForm
 
 
 # если берем форму джанго то modelForm  
@@ -46,3 +47,30 @@ class AddNewsForm(ModelForm):
                 'placeholder': 'текст статьи / новости'
             }),
         }
+
+class CommonSignupForm(SignupForm, BaseSignupForm):
+  
+    email = forms.EmailField(widget=forms.TextInput(attrs={
+                                            
+                                            "placeholder": "адрес почты",
+                                            "autocomplete": "email",
+                                            'class': 'get-started-btn_1 scrollto'})),
+    username = forms.CharField(label="ИМЯ",
+                                widget=forms.TextInput(attrs={
+                                                "placeholder": "имя", 
+                                                "autocomplete": "username",
+                                                'class': 'get-started-btn_3 scrollto'})),
+    first_name = forms.CharField(label="ФАМИЛИЯ",
+                                 widget = forms.TextInput(attrs={
+                                                "placeholder": "фамилия", 
+                                                 "autocomplete": "first_name",
+                                                'class': 'get-started-btn_6 scrollto'})),
+
+
+    def save(self, request):
+        user = super(CommonSignupForm, self).save(request)
+        #user.username = self.cleaned_data['username']
+        #user.first_name = self.cleaned_data['fist_name']
+        user.email = self.cleaned_data['email']
+        user.save()
+        return user

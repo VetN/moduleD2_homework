@@ -175,3 +175,6 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none' # отправление подтверждения на почту
+
+# для изменение формы signup надо переписать путь
+ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm'}
