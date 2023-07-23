@@ -50,26 +50,24 @@ class AddNewsForm(ModelForm):
 
 class CommonSignupForm(SignupForm, BaseSignupForm):
   
-    email = forms.EmailField(widget=forms.TextInput(attrs={
-                                            
-                                            "placeholder": "адрес почты",
-                                            "autocomplete": "email",
-                                            'class': 'get-started-btn_1 scrollto'})),
-    username = forms.CharField(label="ИМЯ",
-                                widget=forms.TextInput(attrs={
-                                                "placeholder": "имя", 
-                                                "autocomplete": "username",
-                                                'class': 'get-started-btn_3 scrollto'})),
-    first_name = forms.CharField(label="ФАМИЛИЯ",
-                                 widget = forms.TextInput(attrs={
-                                                "placeholder": "фамилия", 
-                                                 "autocomplete": "first_name",
-                                                'class': 'get-started-btn_6 scrollto'})),
+   
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields[("password1")] = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'get-started-btn_3 scrollto'}),
+                                                     required=True, label=("ПАРОЛЬ"), )
+        self.fields[("password2")] = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'get-started-btn_3 scrollto'}),
+                                                     required=True, label=("ПАРОЛЬ"), )
+        self.fields[("username")] = forms.CharField(widget=forms.TextInput(attrs={'class': 'get-started-btn_3 scrollto'}),
+                                                     required=True, label=("ИМЯ"), )
+        self.fields[("first_name")] = forms.CharField(widget=forms.TextInput(attrs={'class': 'get-started-btn_3 scrollto'}),
+                                                     required=True, label=("ФАМИЛИЯ"), )
+        self.fields[("email")] = forms.CharField(widget=forms.TextInput(attrs={'class': 'get-started-btn_3 scrollto'}),
+                                                    required=True, label=("E-mail"), )
 
     def save(self, request):
         user = super(CommonSignupForm, self).save(request)
-        #user.username = self.cleaned_data['username']
+        user.username = self.cleaned_data['username']
         #user.first_name = self.cleaned_data['fist_name']
         user.email = self.cleaned_data['email']
         user.save()
