@@ -70,10 +70,11 @@ class CommonSignupForm(SignupForm, BaseSignupForm):
         user.username = self.cleaned_data['username']
         #user.first_name = self.cleaned_data['fist_name']
         user.email = self.cleaned_data['email']
-       
-        user.save()
-        common_group = Group.objects.get[1]
+        common_group = Group.objects.get_or_create(name='common')[0]
         common_group.user_set.add(user)
+        user.save()
+        #common_group = Group.objects.get[1]
+        #common_group.user_set.add(user)
         return user
 
  
