@@ -4,7 +4,7 @@ from django import forms
 from .models import *
 from django.forms import ModelForm, BooleanField # Импортируем true-false поле
 from allauth.account.forms import SignupForm, BaseSignupForm, LoginForm
-
+from django.contrib.auth.models import Group
 
 # если берем форму джанго то modelForm  
 class AddNewsForm(ModelForm):
@@ -66,12 +66,17 @@ class CommonSignupForm(SignupForm, BaseSignupForm):
 
     def save(self, request):
         user = super(CommonSignupForm, self).save(request)
+        
         user.username = self.cleaned_data['username']
         #user.first_name = self.cleaned_data['fist_name']
         user.email = self.cleaned_data['email']
+       
         user.save()
+        common_group = Group.objects.get[1]
+        common_group.user_set.add(user)
         return user
 
+ 
 
 class CommonLoginForm(LoginForm):
        

@@ -13,6 +13,20 @@ class RegisterView(CreateView):
    form_class = RegisterForm
    template_name = 'sign/signup.html'
    success_url = '/'
+            
+            
+            # автоматическое подключение к группе без использования allauth
+            # group = Group.objects.get(name='my_group') 
+            # Обращаемся к БД, находим нужную группу. Может оказаться, что такой группы в БД нет. 
+            # Тогда получим ошибку. Надёжнее использовать метод get_or_create. 
+            # Обратите внимание, что этот метод возвращает кортеж, 
+            # поэтому мы обращаемся к первому элементу кортежа через скобки.
+   def form_valid(self, form):
+        user = form.save()
+        group = Group.objects.get_or_create[1]
+        user.groups.add(group) # добавляем нового пользователя в эту группу
+        user.save()
+        return super().form_valid(form)
 
 class LoginView(FormView):
    model = User

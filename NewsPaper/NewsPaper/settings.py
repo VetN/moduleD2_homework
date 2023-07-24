@@ -178,4 +178,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none' # отправление подтвержд�
 
 # для изменение формы signup надо переписать путь
 ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm',
+                 
                  'login': 'news.forms.CommonLoginForm'}

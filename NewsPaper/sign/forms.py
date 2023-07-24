@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm # н�
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.models import Group
+from news.forms import SignupForm
+
 
 
 class RegisterForm(UserCreationForm):
@@ -45,4 +47,12 @@ class LoginForm(AuthenticationForm):
             #'first_name': forms.TextInput(attrs={'class': 'form-control'}),
            'email': forms.EmailInput(attrs={'class': 'get-started-btn_1 scrollto'}),
        }
-
+# для автоматического подключения к группе при регистрации
+# при использовании пакета allauth
+class BasicSignupForm(SignupForm):
+  
+   def save(self, request):
+       user = super(BasicSignupForm, self).save(request)
+       basic_group = Group.objects.get_or_create[1]
+       basic_group.user_set.add(user)
+       return user
