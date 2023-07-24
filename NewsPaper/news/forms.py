@@ -72,7 +72,6 @@ class CommonSignupForm(SignupForm, BaseSignupForm):
         user.email = self.cleaned_data['email']
             # автомат добавление в группу при регистрации с учетом того, что
             # формы allauth уже переписаны поэтому добавляю сюда
-            
         common_group = Group.objects.get_or_create(name='common')[0]
         common_group.user_set.add(user)
         user.save()

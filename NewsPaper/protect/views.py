@@ -9,6 +9,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 
+from news.models import *
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'protect/index_user.html'# Create your views here.
@@ -36,6 +37,7 @@ def upgrade_me(request):
    premium_group = Group.objects.get(name='premium')
    if not request.user.groups.filter(name='premium').exists():
        premium_group.user_set.add(user)
+       Author.objects.create(authorUser=user)
    return redirect('/')
 
 @login_required # декоратор проверки аунтентификации

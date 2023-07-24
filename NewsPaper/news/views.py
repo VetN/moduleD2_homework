@@ -11,8 +11,9 @@ from .filters import PostFilter
 from .models import *
 from datetime import datetime
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin # 
 
+from django.contrib.auth.mixins import PermissionRequiredMixin # ограничение прав
 
 
 
@@ -105,6 +106,7 @@ class NewsEditView(LoginRequiredMixin, ListView):
     #ordering = ['-dataCreation']
     paginate_by = 6
     form_class = AddNewsForm
+   
     
 
     def get_context_data(self, **kwargs):
@@ -117,11 +119,11 @@ class NewsEditView(LoginRequiredMixin, ListView):
 
 
 
-class AddNewsCreate(LoginRequiredMixin, CreateView):
+class AddNewsCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     
     template_name = 'flatpages/add_news.html' 
     form_class = AddNewsForm
-
+    permission_required = ('news.add_post' )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -144,12 +146,13 @@ class AddNewsCreate(LoginRequiredMixin, CreateView):
     
 
 
-class NewsUpdateView(UpdateView):
+class NewsUpdateView(PermissionRequiredMixin, UpdateView):
         #model = Post
         template_name = 'flatpages/add_news.html' 
         form_class = AddNewsForm
+        permission_required = ('news.change_post' )
         success_url = '/edit/'
-       
+
          # метод get_object мы используем вместо queryset, 
          # чтобы получить информацию об объекте который мы собираемся редактировать
         def get_object(self, **kwargs):
@@ -159,10 +162,11 @@ class NewsUpdateView(UpdateView):
      
 
 
-class NewsDeleteView(DeleteView):
+class NewsDeleteView(PermissionRequiredMixin, DeleteView):
     #model = Post
     template_name = 'flatpages/delete.html'
     queryset = Post.objects.all()
+    permission_required = ('news.delete_post' )
     success_url = '/edit/'
 
 
