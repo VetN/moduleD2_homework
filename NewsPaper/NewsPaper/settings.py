@@ -66,9 +66,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.vk',
+    #'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.yandex',
-    'allauth.socialaccount.providers.odnoklassniki',
+    #'allauth.socialaccount.providers.odnoklassniki',
    #
    # 'django_apscheduler',
     
@@ -177,4 +177,5 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none' # отправление подтверждения на почту
 
 # для изменение формы signup надо переписать путь
-ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm'}
+ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm',
+                 'login': 'news.forms.CommonLoginForm'}

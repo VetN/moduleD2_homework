@@ -40,13 +40,13 @@
               <li><a href="{% url 'category' 6 %}">О ЖИВОТНЫХ</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#services">О НАС</a></li>
           <li><a class="nav-link scrollto" href="#contact">КОНТАКТЫ</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
+      <a href="{% url 'personal' %}" class="get-started-btn scrollto">ЛК</a>
       <a href="{% url 'edit' %}" class="get-started-btn scrollto">РЕДАКТИРОВАТЬ</a>
-      <a href="{% url 'add_news' %}" class="get-started-btn scrollto">ДОБАВИТЬ НОВОСТЬ</a>
+      <a href="{% url 'add_news' %}" class="get-started-btn scrollto">НАПИСАТЬ</a>
       <a href="{% url 'search' %}" class="get-started-btn scrollto">ПОИСК</a>
       <a href="{% url 'news_page' %}" class="get-started-btn scrollto">ВСЕ НОВОСТИ</a>
     </div>

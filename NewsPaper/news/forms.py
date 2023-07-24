@@ -3,7 +3,7 @@
 from django import forms
 from .models import *
 from django.forms import ModelForm, BooleanField # Импортируем true-false поле
-from allauth.account.forms import SignupForm, BaseSignupForm
+from allauth.account.forms import SignupForm, BaseSignupForm, LoginForm
 
 
 # если берем форму джанго то modelForm  
@@ -69,5 +69,27 @@ class CommonSignupForm(SignupForm, BaseSignupForm):
         user.username = self.cleaned_data['username']
         #user.first_name = self.cleaned_data['fist_name']
         user.email = self.cleaned_data['email']
+        user.save()
+        return user
+
+
+class CommonLoginForm(LoginForm):
+       
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'get-started-btn_3 scrollto',
+                                                                 'placeholder': 'введите пароль'}),
+                                                     required=True, label=("ПАРОЛЬ"), )
+     
+ 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["login"] =forms.EmailField(widget=forms.TextInput(attrs={'class': 'get-started-btn_6 scrollto',
+                                                                               'placeholder': 'адрес почты'}),
+                                                    required=True, label=("E-mail"), ) 
+    
+    def save(self, request):
+        user = super(CommonLoginForm, self).save(request)
+        #user.username = self.cleaned_data['username']
+        user.password = self.cleaned_data['password']
+        user.login= self.cleaned_data['email']
         user.save()
         return user
