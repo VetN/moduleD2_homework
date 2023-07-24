@@ -4,12 +4,34 @@
 {% block main_content %}
 
 <body>
+  <div style="text-align: right; margin-right: 20px" >
+    {% if is_not_authors %}
+      <a href="{% url 'protect:upauthors' %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
+        БУДУ АВТОРОМ!
+      </a> 
+    {% else %}
+      <div class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
+        АВТОР
+      </div>
+    {% endif %} 
+    {% if is_not_authors %}
+      <a href="{% url 'protect:upgrade' %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
+        ПОДКЛЮЧЕНИЕ ПРЕМИУМ
+      </a> 
+    {% else %}
+      <div class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
+        ПРЕМИУМ ПОДКЛЮЧЕН
+      </div>
+    {% endif %}
+  
+  <a href="{% url 'sign:logout' %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 20px;">ВЫЙТИ</a>
+</div>
   <main id="main">
     <div class="container" data-aos="fade-up" >
       <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
         <div class="icon-box">
                           
-          <h2>  ПРИВЕТСТВУЕМ ВАС!<br> ЛИЧНЫЙ КАБИНЕТ</h2>
+          <h2>  ПРИВЕТСТВУЕМ ВАС<br> {{request.user.username}} {{ request.user.first_name}}!<br> ЛИЧНЫЙ КАБИНЕТ</h2>
           
         </div>
       </div>
