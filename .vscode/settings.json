@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./NewsPaper/static/assets/data_files"
+    ]
+}
