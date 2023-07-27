@@ -1,9 +1,12 @@
 
 
+from os import name
 from django.http import HttpResponseNotFound
 from django.shortcuts import redirect
 #from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import resolve
+
 
 from .forms import *
 
@@ -54,11 +57,20 @@ class NewsCategory(ListView):
     template_name = 'flatpages/category_news.html' 
     context_object_name = 'news_category'
     
-  
     def get_context_data(self, **kwargs):
+        
         context = super().get_context_data(**kwargs)
         context['category_sort'] = Post.objects.order_by('-id').filter(postCategory=self.kwargs['pk'])
+       
+        
+        self.id = resolve(self.request.path_info).kwargs['pk'] # для подписки/отписки
+        categ  = Category.objects.get(id=self.id)
+        context['category_one'] = categ.pk
+        context['category']= categ  #categ.name
+       
+        
         return context
+
 
 
 

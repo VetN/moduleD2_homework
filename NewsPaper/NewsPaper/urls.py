@@ -35,7 +35,9 @@ urlpatterns = [
     
     # прописываем путь при allauch
     path('accounts/', include('allauth.urls')),
-
+    
+    # путь к папке почтовых 
+    path('mail/', include('mail.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

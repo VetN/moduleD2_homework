@@ -30,7 +30,7 @@ class Author(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=64, unique=True)
-    #subscribers = models.ManyToManyField(User, blank=True)
+    subscribers = models.ManyToManyField(User, blank=True)
     
     def __str__(self):
         return self.name
@@ -99,7 +99,3 @@ class Comment(models.Model):
     def __str__(self):
         return self.commentUser.username 
         
-# модель новости.
-#class MallNews(models.Model):
-    #date = models.DateField(default=datetime.utcnow)
-    #author = models.ForeignKey(Author, on_delete=models.CASCADE)

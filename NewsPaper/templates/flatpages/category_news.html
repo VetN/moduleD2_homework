@@ -2,15 +2,32 @@
 {% load custom_filters %}
 
 {% block main_content %}
-      </div>
-    </div>
-  </section><!-- End Hero -->
+<div style="color: white">
 
+  {% if is_not_subscribe %}
+      <a href="{% url 'sub' category.id %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
+        ПОДПИСАТЬСЯ НА РАССЫЛКУ НОВОСТЕЙ РАЗДЕЛА: {{category}}
+      </a> 
+    {% else %}
+    <a href="{% url 'unsub' category.id %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
+        ОТПИСАТЬСЯ ОТ РАССЫЛКИ НОВОСТЕЙ РАЗДЕЛА: {{category }}{{category_one}}{{mail}}
+    </a>
+    {% endif %} 
+  
+</div>    
+</div>
+     
+  </div>
+    
+  </section><!-- End Hero -->
+ 
   <main id="main">
      
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
+    
+
         <div class="section-title">
           <h2 style="color: black">{{time_now|date:'d M Y'}}<br><br></h2>
           <h6> All News: {{category_sort| length}}</h6>
@@ -19,6 +36,7 @@
 
         <div >
             {% block category%}
+
            
                 {% if 'category_sort' %}
                   
