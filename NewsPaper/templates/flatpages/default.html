@@ -1,4 +1,5 @@
 {% load static %}
+{% load cache %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,7 @@
 
 <body>
   <!-- ======= Header ======= -->
+ 
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
       <h1 class="logo me-auto me-lg-0"><a href="{% url 'home' %}">MN</a></h1>
@@ -63,15 +65,13 @@
           <h2>ВСЕГДА САМЫЕ АКТУАЛЬНЫЕ И ИНТЕРЕСНЫЕ НОВОСТИ</h2>
         </div>
       </div>
- 
+    
 {% block main_content %}
 
 {% endblock main_content %}    
 
 
 
-
-  <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -139,7 +139,10 @@
       </div>
      
     </div>
-  </footer><!-- End Footer -->
+ 
+  </footer>
+  
+  
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

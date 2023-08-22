@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 
+#from decouple import config,Csv,RepositoryEnv
 from pathlib import Path, os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,14 +49,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+     
+
+    'django_apscheduler',
     'django_filters',
 
     'django.contrib.sites',
 	'django.contrib.flatpages',
 
-    
+    'news.apps.NewsConfig',# надо указать не имя нашего приложения, а его конфиг, чтобы всё заработало не до конца понятно, работало и без него
 
-    'news',
+    #'news', если включаем сигналы в отдельном файле и прописываем их 'news.apps.NewsConfig'
     'accounts',
     'static',
     'mail',
@@ -65,6 +69,7 @@ INSTALLED_APPS = [
 
     'allauth',
     'allauth.account',
+    # регистрация через соцсети
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     #'allauth.socialaccount.providers.vk',
@@ -83,6 +88,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+        # добавили для кеширования всего сайта целиком
+    #'django.middleware.cache.UpdateCacheMiddleware',
+    #'django.middleware.common.CommonMiddleware',
+    #'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'NewsPaper.urls'
@@ -172,10 +182,12 @@ LOGIN_REDIRECT_URL = '/'
 
 # регистрация/ авторизация по почте
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_UNIQUE_EMAIL = True #
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none' # отправление подтверждения на почту
+ACCOUNT_EMAIL_VERIFICATION =   'mandatory'# 'none'  отправление подтверждения на почту при регистрации прописываем
+#ACCOUNT_CONFIRM_EMAIL_ON_GET = True позволит избежать дополнительных действий и активирует аккаунт сразу, как только мы перейдём по ссылке
+#ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS — количество дней, в течение которых будет доступна ссылка на подтверждение регистрации
 
 # для изменение формы signup надо переписать путь
 ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm',
@@ -183,15 +195,35 @@ ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm',
                  'login': 'news.forms.CommonLoginForm'}
 
 # для почты и рассылок
+
 EMAIL_HOST = 'smtp.yandex.ru' # адрес сервера Яндекс-почты для всех один и тот же
 EMAIL_PORT = 465 # порт smtp сервера тоже одинаковый
-EMAIL_HOST_USER = 'vet.ness' # ваше имя пользователя, например если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
-EMAIL_HOST_PASSWORD =  # пароль от почты
+EMAIL_HOST_USER = 'vet.ness@yandex.ru' # ваше имя пользователя, например если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_SSL = True # Яндекс использует ssl, подробнее о том, что это, почитайте на Википедии, но включать его здесь обязательно
 
 
-ADMINS = [
-    ('Vet', 'vet.ness@yandex.ru'),
-    # список всех админов в формате ('имя', 'их почта')
-]
-SERVER_EMAIL = 'vet.ness@yandex.ru' # это будет у нас вместо аргумента FROM в массовой рассылке
+#ADMINS = [
+   # ('имя', 'petechka@yandex.ru'),  список всех админов в формате ('имя', 'их почта')
+#]
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER #  проверка при регистрации строчка прописываемздесь указываем уже свою ПОЛНУЮ почту с которой будут отправляться письма 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #- вкл этой строчки пойдет письмо в консоль
+
+# настройки для django_apscheduler
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"  # формат даты, которую будет воспринимать наш задачник
+APSCHEDULER_RUN_NOW_TIMEOUT = 25  # если задача не выполняется за 25 секунд, то она автоматически снимается,
+
+# Указываем, куда будем сохранять кэшируемые файлы! 
+# Не забываем создать папку cache_files внутри папки с manage.py!
+#CACHES = {
+   # 'default': {
+       #'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+       # 'LOCATION': os.path.join(BASE_DIR, 'cache_files'), 
+        #'TIMEOUT': 30, # добавляем стандартное время ожидания в минуту (по умолчанию это 5 минут — 300 секунд)
+   # }
+#}

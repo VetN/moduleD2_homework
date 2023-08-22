@@ -1,0 +1,23 @@
+{% extends "mail/base_mail.html" %}
+{% load custom_filters %}
+{% block main_content %}
+    <div style="text-align:center">
+        <div style="color:black">
+            <h2> {{ user.username}} {{ user.first_name}}!</h2>
+            <p> Вы получили это письмо, потому что оформили еженедельную подписку на адрес:{{user.email}}.<br>
+                За неделю в нашем журнале в разделе {{category_adduser }} появились следующие статьи: </p>
+                {% if post_foruser %}
+                    {% for news in post_foruser %}
+                        <p>Название: {{ news.title }} Автор: {{news.author.authorUser.username}} {{news.author.authorUser.first_name}}</p>
+                        <a href="http://localhost:8000{% url 'o_news' news.id %}">посмотреть новость</a>
+                    {% endfor %}
+                {% else %}
+                    <p> На этой неделе новых публикаций в разделе  {{category_adduser }} нет </p>
+                        <a href="http://localhost:8000{% url 'home' %}">ссылка на главную стрницу сайта </a>
+                    </p>
+                {% endif %}
+        
+              
+        </div>
+    </div>
+{% endblock main_content %}

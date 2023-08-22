@@ -1,12 +1,12 @@
 
 
+from datetime import timezone
 from django import forms
 from .models import *
 from django.forms import ModelForm, BooleanField # Импортируем true-false поле
 from allauth.account.forms import SignupForm, BaseSignupForm, LoginForm
 from django.contrib.auth.models import Group
 
-# если берем форму джанго то modelForm  
 class AddNewsForm(ModelForm):
     
     consent = BooleanField(label='согласие на обработку данных')
@@ -47,6 +47,9 @@ class AddNewsForm(ModelForm):
                 'placeholder': 'текст статьи / новости'
             }),
         }
+   
+
+
 
 class CommonSignupForm(SignupForm, BaseSignupForm):
        

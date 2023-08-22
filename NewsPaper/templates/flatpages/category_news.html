@@ -4,13 +4,13 @@
 {% block main_content %}
 <div style="color: white">
 
-  {% if is_not_subscribe %}
-      <a href="{% url 'sub' category.id %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
+  {% if user not in subscribers %}
+      <a href="{% url 'sub' category_add.id %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
         ПОДПИСАТЬСЯ НА РАССЫЛКУ НОВОСТЕЙ РАЗДЕЛА: {{category}}
       </a> 
     {% else %}
-    <a href="{% url 'unsub' category.id %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
-        ОТПИСАТЬСЯ ОТ РАССЫЛКИ НОВОСТЕЙ РАЗДЕЛА: {{category }}{{category_one}}{{mail}}
+    <a href="{% url 'unsub' category_add.id %}" class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px; margin-right: 0;">
+        ОТПИСАТЬСЯ ОТ РАССЫЛКИ НОВОСТЕЙ РАЗДЕЛА: {{category}}
     </a>
     {% endif %} 
   
