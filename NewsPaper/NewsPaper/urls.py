@@ -28,16 +28,6 @@ urlpatterns = [
     path('',include('news.urls')),
     #path('news/',include('news.urls')),
     #path('one_news/', include('news.urls')),
-    
-    # пути для регистрации 
-    path('sign/', include('sign.urls')),
-    path('user/', include('protect.urls')),
-    
-    # прописываем путь при allauch
-    path('accounts/', include('allauth.urls')),
-    
-    # путь к папке почтовых 
-    path('mail/', include('mail.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

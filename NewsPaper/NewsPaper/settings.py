@@ -29,15 +29,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# настройка для allauch пишем сами 
-AUTHENTICATION_BACKENDS = [
-   # Needed to login by username in Django admin, regardless of `allauth`
-   'django.contrib.auth.backends.ModelBackend',
-  
-   # `allauth` specific authentication methods, such as login by e-mail
-   'allauth.account.auth_backends.AuthenticationBackend',
-]
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -56,22 +47,8 @@ INSTALLED_APPS = [
     
 
     'news',
-    'accounts',
+    'account',
     'static',
-    'mail',
-
-    'sign',
-    'protect',
-
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    #'allauth.socialaccount.providers.vk',
-    'allauth.socialaccount.providers.yandex',
-    #'allauth.socialaccount.providers.odnoklassniki',
-   #
-   # 'django_apscheduler',
     
 ]
 
@@ -164,34 +141,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR ,'media/')
 MEDIA_URL = '/media/'
-
-
-#LOGIN_URL = '/sign/login/'
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
-
-# регистрация/ авторизация по почте
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none' # отправление подтверждения на почту
-
-# для изменение формы signup надо переписать путь
-ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm',
-                 
-                 'login': 'news.forms.CommonLoginForm'}
-
-# для почты и рассылок
-EMAIL_HOST = 'smtp.yandex.ru' # адрес сервера Яндекс-почты для всех один и тот же
-EMAIL_PORT = 465 # порт smtp сервера тоже одинаковый
-EMAIL_HOST_USER = 'vet.ness' # ваше имя пользователя, например если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
-EMAIL_HOST_PASSWORD = 'iwillbetheBest' # пароль от почты
-EMAIL_USE_SSL = True # Яндекс использует ssl, подробнее о том, что это, почитайте на Википедии, но включать его здесь обязательно
-
-
-ADMINS = [
-    ('Vet', 'vet.ness@yandex.ru'),
-    # список всех админов в формате ('имя', 'их почта')
-]
-SERVER_EMAIL = 'vet.ness@yandex.ru' # это будет у нас вместо аргумента FROM в массовой рассылке
