@@ -1,0 +1,16 @@
+{% extends "mail/base_mail.html" %}
+{% load custom_filters %}
+{% block main_content %}
+    <div style="text-align:center">
+        <div style="color:black">
+            <h2> {{ user.username}} {{ user.fisrt_name}}!</h2>
+            <h2>В категории {{category_adduser }} на которую вы подписаны, появилcя новый пост! </h2>
+            <h2> Название: {{post_foruser.title}}</h2>
+            <h4>  Автор: {{post_foruser.author.authorUser.username}} {{post_foruser.author.authorUser.first_name}}</h4>
+            <p> {{post_foruser.preview}}</p> <!-- пишем только часть новости-->          
+            <a href="http://127.0.0.1:8000{% url 'o_news' post_foruser.id %}"> Перейти к новости</a>
+
+          
+       
+    </div>
+{% endblock main_content %}

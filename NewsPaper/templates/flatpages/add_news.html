@@ -1,0 +1,24 @@
+{% extends 'flatpages/default.html'%}
+{% load custom_filters %}
+
+{% block main_content %}
+ 
+    <div class="container" data-aos="fade-up" >
+      <div class=" align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100%">
+        <div class="icon-box" style="color:rgba(255, 255, 255, 0.9)">
+          <div style="color:rgba(255, 255, 255, 0.9)">
+                  
+            <form  method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="get-started-btn_f scrollto " style="margin-right: 0px;" >{{form.as_p}}</div><br>
+                <input class="get-started-btn scrollto" style="background: none; color:rgba(255, 255, 255, 0.9); margin-top:30px;"  type="submit" value="Добавить новость"> 
+            </form>
+                
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>   
+</section>
+    
+{% endblock main_content %}

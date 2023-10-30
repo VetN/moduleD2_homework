@@ -1,0 +1,85 @@
+2023-08-23 06:27:48,816 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:27:48,955 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:27:48,955 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:27:48,956 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:02,907 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:03,950 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:04,209 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:04,209 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:04,210 - INFO -views - -----Hi! Logging -----------------------------------
+2023-08-23 06:29:07,888 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:08,979 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:09,077 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:09,078 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:09,078 - INFO -views - -----Hi! Logging туцы-----------------------------------
+2023-08-23 06:29:11,638 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:12,187 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:12,286 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:12,286 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:12,286 - INFO -views - -----Hi! Logging туцыВуефшд-----------------------------------
+2023-08-23 06:29:14,777 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:15,320 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:15,443 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:15,443 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:15,443 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:17,529 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:18,420 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:18,521 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:18,521 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:18,521 - INFO -views - -----Hi! Logging -----------------------------------
+2023-08-23 06:29:20,161 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:21,163 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:21,266 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:21,266 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:21,266 - INFO -views - -----Hi! Logging News-----------------------------------
+2023-08-23 06:29:24,777 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:25,752 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:25,881 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:25,881 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:25,881 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:29:33,568 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:34,485 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:34,620 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:34,621 - INFO -views - -----Hi! Logging -----------------------------------
+2023-08-23 06:29:34,621 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:29:37,096 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:37,646 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:37,753 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:37,754 - INFO -views - -----Hi! Logging Cate-----------------------------------
+2023-08-23 06:29:37,754 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:29:39,478 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/news/views.py changed, reloading.
+2023-08-23 06:29:40,222 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:29:40,322 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:29:40,322 - INFO -views - -----Hi! Logging Category-----------------------------------
+2023-08-23 06:29:40,323 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:33:58,569 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-08-23 06:33:59,502 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:33:59,618 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:33:59,618 - INFO -views - -----Hi! Logging Category-----------------------------------
+2023-08-23 06:33:59,618 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:34:03,241 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-08-23 06:34:03,780 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:34:03,883 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:34:03,884 - INFO -views - -----Hi! Logging Category-----------------------------------
+2023-08-23 06:34:03,884 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:34:06,385 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-08-23 06:34:07,114 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:34:07,213 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:34:07,214 - INFO -views - -----Hi! Logging Category-----------------------------------
+2023-08-23 06:34:07,214 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:34:09,709 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-08-23 06:34:10,578 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:34:10,678 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:34:10,678 - INFO -views - -----Hi! Logging Category-----------------------------------
+2023-08-23 06:34:10,678 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:34:15,347 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-08-23 06:48:30,109 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:48:30,342 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:48:30,342 - INFO -views - -----Hi! Logging Category-----------------------------------
+2023-08-23 06:48:30,343 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:48:53,371 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-08-23 06:49:07,469 - INFO -autoreload - Watching for file changes with StatReloader
+2023-08-23 06:49:07,564 - INFO -views - -----Hi! Logging-----------------------------------
+2023-08-23 06:49:07,565 - INFO -views - -----Hi! Logging Category-----------------------------------
+2023-08-23 06:49:07,565 - INFO -views - -----Hi! Logging NewsDetail-----------------------------------
+2023-08-23 06:52:25,518 - INFO -autoreload - /Users/vetaness/VN/Учеба D/moduleD2_homework/NewsPaper/NewsPaper/settings.py changed, reloading.

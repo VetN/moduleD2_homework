@@ -1,0 +1,1501 @@
+023-08-23 05:35:54,738 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /accounts/signup/ - (<class 'ValueError'>, ValueError('not enough values to unpack (expected 2, got 1)'), <traceback object at 0x10cc126c0>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/utils.py", line 313, in send_email_confirmation
+    email_address = EmailAddress.objects.get_for_user(user, email)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/managers.py", line 63, in get_for_user
+    raise self.model.DoesNotExist()
+allauth.account.models.EmailAddress.DoesNotExist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/message.py", line 64, in forbid_multi_line_headers
+    val.encode("ascii")
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-4: ordinal not in range(128)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/decorators.py", line 20, in wrap
+    resp = function(request, *args, **kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/views/decorators/debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/views.py", line 234, in dispatch
+    return super(SignupView, self).dispatch(request, *args, **kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/views.py", line 77, in dispatch
+    response = super(RedirectAuthenticatedUserMixin, self).dispatch(
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/views.py", line 207, in dispatch
+    return super(CloseableSignupMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/views.py", line 105, in post
+    response = self.form_valid(form)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/views.py", line 254, in form_valid
+    return complete_signup(
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/utils.py", line 186, in complete_signup
+    return perform_login(
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/utils.py", line 168, in perform_login
+    response = adapter.pre_login(request, user, **hook_kwargs)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/adapter.py", line 412, in pre_login
+    send_email_confirmation(request, user, signup=signup, email=email)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/utils.py", line 324, in send_email_confirmation
+    email_address = EmailAddress.objects.add_email(
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/managers.py", line 24, in add_email
+    email_address.send_confirmation(request, signup=signup)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/models.py", line 60, in send_confirmation
+    confirmation.send(request, signup=signup)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/models.py", line 168, in send
+    get_adapter(request).send_confirmation_mail(request, self, signup)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/adapter.py", line 549, in send_confirmation_mail
+    self.send_mail(email_template, emailconfirmation.email_address.email, ctx)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/allauth/account/adapter.py", line 140, in send_mail
+    msg.send()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/backends/console.py", line 36, in send_messages
+    self.write_message(message)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/backends/console.py", line 17, in write_message
+    msg = message.message()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/message.py", line 264, in message
+    self._set_list_header_if_not_empty(msg, "To", self.to)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/message.py", line 429, in _set_list_header_if_not_empty
+    msg[header] = value
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/message.py", line 186, in __setitem__
+    name, val = forbid_multi_line_headers(name, val, self.encoding)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/message.py", line 67, in forbid_multi_line_headers
+    val = ", ".join(
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/message.py", line 68, in <genexpr>
+    sanitize_address(addr, encoding) for addr in getaddresses((val,))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/mail/message.py", line 100, in sanitize_address
+    localpart, domain = address.rsplit("@", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+2023-08-23 05:35:54,750 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "POST /accounts/signup/ HTTP/1.1" 500 208284 - None
+2023-08-23 05:54:53,701 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/333 - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x103c1c480>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 05:54:53,704 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/333 HTTP/1.1" 500 269965 - None
+2023-08-23 05:55:35,614 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/334 - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x103f54140>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 05:55:35,615 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/334 HTTP/1.1" 500 272601 - None
+2023-08-23 05:56:19,709 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/335 - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x103cbd400>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 05:56:19,711 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/335 HTTP/1.1" 500 275323 - None
+2023-08-23 05:56:52,005 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /index/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x103a33d80>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 05:56:52,006 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /index/ HTTP/1.1" 500 239908 - None
+2023-08-23 05:57:11,449 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /index/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x10490c140>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 05:57:11,451 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /index/ HTTP/1.1" 500 239915 - None
+2023-08-23 06:02:24,760 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /333 - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x10491c880>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:02:24,762 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /333 HTTP/1.1" 500 199846 - None
+2023-08-23 06:02:43,187 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x10495f940>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:02:43,189 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/ HTTP/1.1" 500 275122 - None
+2023-08-23 06:04:09,946 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x104907480>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:04:09,948 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/ HTTP/1.1" 500 275228 - None
+2023-08-23 06:04:15,516 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x103d33700>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:04:15,518 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/ HTTP/1.1" 500 275259 - None
+2023-08-23 06:04:19,467 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /index/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x1048e64c0>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:04:19,469 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /index/ HTTP/1.1" 500 239880 - None
+2023-08-23 06:05:31,794 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /index/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x103c1fac0>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:05:31,796 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /index/ HTTP/1.1" 500 238205 - None
+2023-08-23 06:05:34,120 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: / - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x103d20600>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:05:34,123 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET / HTTP/1.1" 500 238120 - None
+2023-08-23 06:05:43,426 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: / - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x103c1dfc0>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:05:43,429 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET / HTTP/1.1" 500 238145 - None
+2023-08-23 06:57:55,860 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/336 - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x105e7fac0>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:57:55,862 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/336 HTTP/1.1" 500 269715 - None
+2023-08-23 06:58:41,604 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/337 - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x105f35280>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:58:41,606 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/337 HTTP/1.1" 500 272048 - None
+2023-08-23 06:58:52,943 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /index/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x1060ccb80>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:58:52,944 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /index/ HTTP/1.1" 500 239281 - None
+2023-08-23 06:59:05,822 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /index/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x10629bdc0>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 06:59:05,823 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /index/ HTTP/1.1" 500 239393 - None
+2023-08-23 07:22:34,615 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /news/338 - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x1046b2400>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 07:22:34,617 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /news/338 HTTP/1.1" 500 270196 - None
+2023-08-23 07:25:38,531 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/utils/log.py - Internal Server Error: /index/ - (<class 'ValueError'>, ValueError("The 'photo' attribute has no file associated with it."), <traceback object at 0x104983780>)
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 66, in url
+    self._require_file()
+  File "/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/db/models/fields/files.py", line 41, in _require_file
+    raise ValueError(
+ValueError: The 'photo' attribute has no file associated with it.
+2023-08-23 07:25:38,533 - ERROR -/Users/vetaness/VN/Учеба D/moduleD2_homework/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py - "GET /index/ HTTP/1.1" 500 239767 - None
